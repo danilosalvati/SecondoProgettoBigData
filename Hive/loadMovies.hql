@@ -1,0 +1,6 @@
+-- Estraggo i film --
+
+CREATE TABLE IF NOT EXISTS movies (title STRING, year STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INPATH '../../movies-formatted' OVERWRITE INTO TABLE movies;
