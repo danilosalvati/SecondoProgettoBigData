@@ -1,0 +1,6 @@
+Prime analisi implementate (bozza):
+
+- I primi 10 attori e attrici piu' prolifici
+- L'anno piu' prolifico
+- Gli attori e le attrici che hanno partecipato 250 film piu' importanti
+- I registi che hanno partecipato ai 250 film piu' importanti
