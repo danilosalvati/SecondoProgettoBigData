@@ -4,3 +4,7 @@ Prime analisi implementate (bozza):
 - L'anno piu' prolifico
 - Gli attori e le attrici che hanno partecipato 250 film piu' importanti
 - I registi che hanno partecipato ai 250 film piu' importanti
+- Le nazioni dei film più importanti di sempre
+- I produttori dei film piu' importanti
+- Film prodotti in ogni anno per ciascuna nazione
+- Numero di citazioni per i film piu' importanti
