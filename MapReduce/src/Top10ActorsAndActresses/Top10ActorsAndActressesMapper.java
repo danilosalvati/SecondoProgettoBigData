@@ -26,7 +26,7 @@ Mapper<Object, Text, Text, IntWritable> {
 			 * altrimenti escludo la riga
 			 */
 
-			String[] movies = values[1].toString().split("<$>");
+			String[] movies = values[1].toString().split("<ENDVALUE>");
 			
 			/* Scrivo la coppia (attore, numeroFilm) */
 			context.write(new Text(values[0].toUpperCase()), new IntWritable(movies.length));
