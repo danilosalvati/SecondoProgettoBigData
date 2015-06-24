@@ -1,8 +1,11 @@
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMovies.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Top10ActorsAndActressesMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/Pair.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/MostProlificYearMapper.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMoviesReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Top10ActorsAndActresses.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/MostProlificYear.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Top10ActorsAndActressesReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Pair.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMoviesMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/MostProlificYearReducer.java
