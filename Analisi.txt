@@ -8,3 +8,5 @@ Prime analisi implementate (bozza):
 - I produttori dei film piu' importanti
 - Film prodotti in ogni anno per ciascuna nazione
 - Numero di citazioni per i film piu' importanti
+- Le prime 100 keywords usate nei film di maggior successo
+- Generi dei film di maggior successo

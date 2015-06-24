@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS actors (actor STRING, filmArray ARRAY<STRING>);
 
 INSERT INTO TABLE actors
 SELECT actor, filmArray
-FROM (SELECT actor, split(rowFilm,'<\\$>') as filmArray FROM actorsRAW) as actors2;
+FROM (SELECT actor, split(rowFilm,'<ENDVALUE>') as filmArray FROM actorsRAW) as actors2;
 
 DROP TABLE actorsRaw;
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS actresses (actress STRING, filmArray ARRAY<STRING>);
 
 INSERT INTO TABLE actresses
 SELECT actress, filmArray
-FROM (SELECT actress, split(rowFilm,'<\\$>') as filmArray FROM actressesRAW) as actresses2;
+FROM (SELECT actress, split(rowFilm,'<ENDVALUE>') as filmArray FROM actressesRAW) as actresses2;
 
 DROP TABLE actressesRAW;
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS directors (director STRING, filmArray ARRAY<STRING>);
 
 INSERT INTO TABLE directors
 SELECT director, filmArray
-FROM (SELECT director, split(rowFilm,'<\\$>') as filmArray FROM directorsRAW) as directors2;
+FROM (SELECT director, split(rowFilm,'<ENDVALUE>') as filmArray FROM directorsRAW) as directors2;
 
 DROP TABLE directorsRAW;
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS producers (producer STRING, filmArray ARRAY<STRING>);
 
 INSERT INTO TABLE producers
 SELECT producer, filmArray
-FROM (SELECT producer, split(rowFilm,'<\\$>') as filmArray FROM producersRAW) as producers2;
+FROM (SELECT producer, split(rowFilm,'<ENDVALUE>') as filmArray FROM producersRAW) as producers2;
 
 DROP TABLE producersRAW;
 
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS quotes (film STRING, quotesArray ARRAY<STRING>);
 
 INSERT INTO TABLE quotes
 SELECT film, quotesArray
-FROM (SELECT film, split(rowQuotes,'<\\$>') as quotesArray FROM quotesRAW) as quotes2;
+FROM (SELECT film, split(rowQuotes,'<ENDVALUE>') as quotesArray FROM quotesRAW) as quotes2;
 
 DROP TABLE quotesRaw;
 
@@ -136,6 +136,23 @@ FROM (SELECT rowArray[6] as title, substr(rowArray[5], 2, length(rowArray[5]) - 
 DROP TABLE ratingsRAW;
 DROP VIEW ratingsArray;
 
+--
+-- Carico la tabella delle keywords
+--
+
+CREATE TABLE IF NOT EXISTS keywords (film STRING, keyword STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INPATH '../../keywords-formatted' OVERWRITE INTO TABLE keywords;
+
+--
+-- Carico la tabella dei generi --
+--
+
+CREATE TABLE IF NOT EXISTS genres (film STRING, genre STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INPATH '../../genres-formatted' OVERWRITE INTO TABLE genres;
 
 
 -------------------------------------------------------------------------------
@@ -234,7 +251,7 @@ WHERE movies.title=countries.title
 GROUP BY nation, year;
 
 --
--- Numero di citazioni per i migiori film di sempre --
+-- Numero di citazioni per i migliori film di sempre --
 --
 
 INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesQuotes'
@@ -242,6 +259,30 @@ SELECT film, size(quotesArray) as numQuotes
 FROM ratings,quotes
 WHERE ratings.title=quotes.film
 SORT BY numQuotes DESC;
+
+
+--
+-- Le prime 100 Keywords per i migliori film di sempre --
+--
+
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesKeywords'
+SELECT keyword, COUNT(*) as numFilms
+FROM ratings,keywords
+WHERE ratings.title=keywords.film
+GROUP BY keyword
+SORT BY numFilms DESC
+LIMIT 100;
+
+--
+-- Generi dei migilor film di sempre --
+--
+
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesGenres'
+SELECT genre, COUNT(*) as numFilms
+FROM ratings,genres
+WHERE ratings.title=genres.film
+GROUP BY genre
+SORT BY numFilms DESC;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -262,3 +303,5 @@ DROP TABLE movies;
 DROP TABLE producers;
 DROP TABLE quotes;
 DROP TABLE ratings;
+DROP TABLE keywords;
+DROP TABLE genres;
