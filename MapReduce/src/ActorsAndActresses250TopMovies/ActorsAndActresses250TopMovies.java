@@ -24,9 +24,8 @@ public class ActorsAndActresses250TopMovies {
 
 		job.setJarByClass(ActorsAndActresses250TopMovies.class);
 		job.setMapperClass(ActorsAndActresses250TopMoviesMapper.class);
-		job.setCombinerClass(ActorsAndActresses250TopMoviesReducer.class);
 
-		job.setNumReduceTasks(1);
+		//job.setNumReduceTasks(1);
 		job.setReducerClass(ActorsAndActresses250TopMoviesReducer.class);
 
 		job.setOutputKeyClass(Text.class);

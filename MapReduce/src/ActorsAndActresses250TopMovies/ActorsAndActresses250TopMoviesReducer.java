@@ -14,15 +14,21 @@ Reducer<Text, Text, Text, Text> {
 		String result = "";
 
 		for (Text value : values) {
-			result = result + value.toString();
+			result = result + value.toString() + " - ";
 		}
 		
-		//context.write(key, new Text(result));
+		try {
+			result = result.substring(0, result.length() - 3);
+		} catch (Exception e) {			
+		}
 
 		if (result.contains("<TOJOIN>")) {
+			result = result.replace("<TOJOIN> - ", "");
+			result = result.replace(" - <TOJOIN>", "");
+			
 			context.write(key, new Text(result));
 		}
-		
+
 	}
 
 }
