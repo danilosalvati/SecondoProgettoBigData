@@ -1,8 +1,12 @@
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMoviesCountMapper.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/Directors250TopMovies/Directors250TopMoviesJoinMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMovies.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/Directors250TopMovies/Directors250TopMoviesCountMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/Pair.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Top10ActorsAndActresses.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/MostProlificYear.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/Directors250TopMovies/Pair.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/Directors250TopMovies/Directors250TopMovies.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMoviesJoinReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Top10ActorsAndActressesReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/Pair.java
@@ -10,5 +14,7 @@
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Top10ActorsAndActressesMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/MostProlificYearMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMoviesCountReducer.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/Directors250TopMovies/Directors250TopMoviesCountReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Pair.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/Directors250TopMovies/Directors250TopMoviesJoinReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMoviesJoinMapper.java
