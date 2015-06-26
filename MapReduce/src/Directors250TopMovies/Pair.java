@@ -2,7 +2,7 @@ package Directors250TopMovies;
 
 /**
  * Questa classe modella una coppia di valori (String, Integer) rappresentanti
- * la coppia attore e rispettivi film
+ * la coppia regista e rispettivi film
  *
  */
 public class Pair {

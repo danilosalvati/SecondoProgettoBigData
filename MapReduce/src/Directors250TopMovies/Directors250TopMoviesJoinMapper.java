@@ -7,7 +7,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 /**
  * Il mapper costruisce le coppie (film, regista) o (film, "<TOJOIN>")
- * (a seconda se sta parsando il file dei registi o
+ * a seconda se sta parsando il file dei registi o
  * quello dei 250 top film e le invia al reducer che fa il join
  *
  */
