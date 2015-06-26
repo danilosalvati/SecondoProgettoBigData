@@ -52,7 +52,7 @@ public class ConvertQuotesFileScript {
 						 * separatore perché di troppo
 						 */
 						bw.write(film + "\t"
-								+ quotes.substring(0, quotes.length() - 3));
+								+ quotes.substring(0, quotes.length() - 10));
 
 						bw.newLine();
 					}
