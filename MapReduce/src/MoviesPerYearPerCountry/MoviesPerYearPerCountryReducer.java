@@ -1,4 +1,4 @@
-package Countries250TopMovies;
+package MoviesPerYearPerCountry;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-import Countries250TopMovies.Pair;
+import MoviesPerYearPerCountry.Pair;
 
-public class Countries250TopMoviesCountReducer extends
+public class MoviesPerYearPerCountryReducer extends
 Reducer<Text, IntWritable, Text, IntWritable> {
 
 	private PriorityQueue<Pair> queue;
@@ -54,8 +54,9 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 		/* Riestraggo gli elementi al contrario per avere il giusto ordinamento */
 		for (int i = topPairs.size() - 1; i >= 0; i--) {
 			Pair topPair = topPairs.get(i);
-			context.write(new Text(topPair.country), new IntWritable(
+			context.write(new Text(topPair.countryAndYear), new IntWritable(
 					topPair.movies));
 		}
 	}
+
 }

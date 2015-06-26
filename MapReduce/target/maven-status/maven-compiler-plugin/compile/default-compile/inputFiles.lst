@@ -9,6 +9,7 @@
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/MostProlificYearReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Countries250TopMovies/Countries250TopMoviesCountMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Keywords250TopMovies/Keywords250TopMoviesCountMapper.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/MoviesPerYearPerCountry/MoviesPerYearPerCountry.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Top10ActorsAndActressesMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Genres250TopMovies/Genres250TopMoviesCountReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/MostProlificYearMapper.java
@@ -19,6 +20,7 @@
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMoviesCountMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/QuotesNumberFor250TopMovies/QuotesNumberFor250TopMoviesJoinMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificActorsAndActresses/Pair.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/MoviesPerYearPerCountry/MoviesPerYearPerCountryMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Directors250TopMovies/Directors250TopMoviesCountMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Top10ActorsAndActresses.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/MostProlificYear/MostProlificYear.java
@@ -40,6 +42,7 @@
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Countries250TopMovies/Countries250TopMoviesJoinMapper.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/ActorsAndActresses250TopMovies/ActorsAndActresses250TopMoviesCountReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/QuotesNumberFor250TopMovies/QuotesNumberFor250TopMoviesCountMapper.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/MoviesPerYearPerCountry/MoviesPerYearPerCountryReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Countries250TopMovies/Pair.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Producers250TopMovies/Producers250TopMoviesCountReducer.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Genres250TopMovies/Genres250TopMoviesJoinReducer.java
@@ -48,6 +51,7 @@
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Countries250TopMovies/Countries250TopMovies.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Directors250TopMovies/Directors250TopMovies.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Top10ActorsAndActresses/Top10ActorsAndActressesReducer.java
+/home/damian/git/SecondoProgettoBigData/MapReduce/src/MoviesPerYearPerCountry/Pair.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/Genres250TopMovies/Genres250TopMovies.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/QuotesNumberFor250TopMovies/Pair.java
 /home/damian/git/SecondoProgettoBigData/MapReduce/src/QuotesNumberFor250TopMovies/QuotesNumberFor250TopMoviesCountReducer.java

@@ -31,7 +31,7 @@ Mapper<Object, Text, Text, Text> {
 			}
 			
 		} else {
-			/* Se sto parsando il file delle citazioni... */
+			/* Se sto parsando il file delle nazioni... */
 			
 			String[] values = value.toString().split("\t");
 			
