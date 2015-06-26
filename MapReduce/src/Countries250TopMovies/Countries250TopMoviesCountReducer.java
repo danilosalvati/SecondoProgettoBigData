@@ -1,4 +1,4 @@
-package QuotesNumberFor250TopMovies;
+package Countries250TopMovies;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-import QuotesNumberFor250TopMovies.Pair;
+import Countries250TopMovies.Pair;
 
-public class QuotesNumberFor250TopMoviesCountReducer extends
+public class Countries250TopMoviesCountReducer extends
 Reducer<Text, IntWritable, Text, IntWritable> {
 
 
@@ -22,7 +22,7 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 	protected void setup(Context ctx) {
 		queue = new PriorityQueue<Pair>(11, new Comparator<Pair>() {
 			public int compare(Pair p1, Pair p2) {
-				return p1.quotes.compareTo(p2.quotes);
+				return p1.movies.compareTo(p2.movies);
 			}
 		});
 	}
@@ -30,13 +30,13 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 	public void reduce(Text key, Iterable<IntWritable> values, Context context)
 			throws IOException, InterruptedException {
 
-		/* Incremento le citazioni */
-		int quotes = 0;
+		/* Incremento i film */
+		int movies = 0;
 		for (IntWritable value : values) {
-			quotes = quotes + value.get();
+			movies = movies + value.get();
 		}
 		/* Aggiungo la coppia alla coda */
-		queue.add(new Pair(key.toString(), quotes));
+		queue.add(new Pair(key.toString(), movies));
 	}
 
 	/**
@@ -55,8 +55,8 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 		/* Riestraggo gli elementi al contrario per avere il giusto ordinamento */
 		for (int i = topPairs.size() - 1; i >= 0; i--) {
 			Pair topPair = topPairs.get(i);
-			context.write(new Text(topPair.movie), new IntWritable(
-					topPair.quotes));
+			context.write(new Text(topPair.country), new IntWritable(
+					topPair.movies));
 		}
 	}
 }
