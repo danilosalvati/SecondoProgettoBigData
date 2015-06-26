@@ -168,7 +168,7 @@ FROM actresses;
 -- Da questa tabella seleziono i primi 10 --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisProlificActors'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/ProlificActors'
 SELECT name, size(filmArray) as numFilm
 FROM all_actors
 SORT BY numFilm DESC
@@ -178,7 +178,7 @@ LIMIT 10;
 -- Adesso seleziono l'anno piu' prolifico --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisProlificYears'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/ProlificYears'
 SELECT year, COUNT(*) as numFilms
 FROM movies
 GROUP BY year
@@ -192,7 +192,7 @@ LIMIT 1;
 add jar ArrayContainsSubstringUDF.jar;
 CREATE TEMPORARY FUNCTION array_contains_substring AS 'it.uniroma3.bigDataProject.ArrayContainsSubstringUDF';
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisBestActors'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestActors'
 SELECT name, COUNT(*) as numFilms
 FROM all_actors, ratings
 WHERE array_contains_substring(title,filmArray)
@@ -203,7 +203,7 @@ ORDER BY numFilms DESC;
 -- Faccio la stessa cosa per i registi --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisBestDirectors'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestDirectors'
 SELECT director, COUNT(*) as numFilms
 FROM directors, ratings
 WHERE array_contains_substring(title,filmArray)
@@ -214,7 +214,7 @@ ORDER BY numFilms DESC;
 -- Estraggo le nazioni che compaiono tra i miglior film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisBestCountries'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestCountries'
 SELECT nation, COUNT(*) as numFilms
 FROM ratings, countries
 WHERE ratings.title=countries.title
@@ -225,7 +225,7 @@ ORDER BY numFilms DESC;
 -- Estraggo i film di successo per ogni produttore --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisBestProducers'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestProducers'
 SELECT producer, COUNT(*) as numFilms
 FROM ratings, producers
 WHERE array_contains_substring(title,filmArray)
@@ -235,7 +235,7 @@ SORT BY numFilms DESC;
 --
 -- Numero di film prodotti per ciascun anno in ogni nazione --
 --
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisFilmPerYearNations'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/FilmPerYearNations'
 SELECT nation, year, COUNT(*) as numFilms
 FROM movies, countries
 WHERE movies.title=countries.title
@@ -245,7 +245,7 @@ GROUP BY nation, year;
 -- Numero di citazioni per i migliori film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisBestMoviesQuotes'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestMoviesQuotes'
 SELECT film, size(quotesArray) as numQuotes
 FROM ratings,quotes
 WHERE ratings.title=quotes.film
@@ -256,7 +256,7 @@ SORT BY numQuotes DESC;
 -- Le prime 100 Keywords per i migliori film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisBestMoviesKeywords'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestMoviesKeywords'
 SELECT keyword, COUNT(*) as numFilms
 FROM ratings,keywords
 WHERE ratings.title=keywords.film
@@ -268,7 +268,7 @@ LIMIT 100;
 -- Generi dei miglior film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysisBestMoviesGenres'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestMoviesGenres'
 SELECT genre, COUNT(*) as numFilms
 FROM ratings,genres
 WHERE ratings.title=genres.film
