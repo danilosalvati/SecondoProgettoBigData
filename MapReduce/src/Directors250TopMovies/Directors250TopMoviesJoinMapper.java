@@ -1,4 +1,4 @@
-package ActorsAndActresses250TopMovies;
+package Directors250TopMovies;
 
 import java.io.IOException;
 
@@ -6,12 +6,12 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 /**
- * Il mapper costruisce le coppie (film, attore) o (film, "<TOJOIN>")
- * (a seconda se sta parsando il file degli/delle attori/attrici o
+ * Il mapper costruisce le coppie (film, regista) o (film, "<TOJOIN>")
+ * (a seconda se sta parsando il file dei registi o
  * quello dei 250 top film e le invia al reducer che fa il join
  *
  */
-public class ActorsAndActresses250TopMoviesMapper extends
+public class Directors250TopMoviesJoinMapper extends
 Mapper<Object, Text, Text, Text> {
 
 	public void map(Object key, Text value, Context context)
@@ -27,7 +27,7 @@ Mapper<Object, Text, Text, Text> {
 			context.write(new Text(values[3]), new Text("<TOJOIN>"));
 
 		} else {
-			/* Se sto parsando il file degli/delle attori/attrici... */
+			/* Se sto parsando il file dei registi... */
 			
 			String[] values = value.toString().split("\t");
 			String title = "";
@@ -36,7 +36,7 @@ Mapper<Object, Text, Text, Text> {
 				String[] movies = values[1].toString().split("<ENDVALUE>");
 				
 				for (String movie : movies) {
-					/* Scrivo la coppia (film, attore) per tutti i film dell'attore*/
+					/* Scrivo la coppia (film, regista) per tutti i film del regista*/
 					title = movie.split("\\)")[0] + ")";
 					title = title.replaceAll("\"","");
 					context.write(new Text(title), new Text(values[0].toString()));
