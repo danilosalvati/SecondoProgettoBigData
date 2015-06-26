@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.Mapper;
  * quello dei 250 top film e le invia al reducer che fa il join
  *
  */
-public class ActorsAndActresses250TopMoviesMapper extends
+public class ActorsAndActresses250TopMoviesJoinMapper extends
 Mapper<Object, Text, Text, Text> {
 
 	public void map(Object key, Text value, Context context)
