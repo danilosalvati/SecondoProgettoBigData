@@ -1,17 +1,17 @@
-package MostProlificYear;
+package MostProlificActorsAndActresses;
 
 /**
  * Questa classe modella una coppia di valori (String, Integer) rappresentanti
- * l'anno ed il numero di film di quell'anno
+ * l'attore/attrice ed il numero di film
  *
  */
 public class Pair {
 	
-	public String year;
+	public String actor;
 	public Integer moviesNumber;
 
-	public Pair(String year, Integer moviesNumber) {
-		this.year = year;
+	public Pair(String actor, Integer moviesNumber) {
+		this.actor = actor;
 		this.moviesNumber = moviesNumber;
 	}
 };

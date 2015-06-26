@@ -1,4 +1,4 @@
-package Directors250TopMovies;
+package Keywords250TopMovies;
 
 import java.io.IOException;
 
@@ -10,26 +10,26 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class Directors250TopMovies {
+public class Keywords250TopMovies {
 
-	private static final String OUTPUT_PATH = "/intermediate_output_directors";
+	private static final String OUTPUT_PATH = "/intermediate_output_keyword";
 
 	public static void main(String[] args) throws ClassNotFoundException,
 	IOException, InterruptedException {
 
 		if (args.length != 3) {
-			System.err.println("USAGE: <hdfs directors path> <hdfs top250movies path> <hdfs output path>");
+			System.err.println("USAGE: <hdfs keywords path> <hdfs top250movies path> <hdfs output path>");
 			System.exit(1);
 		}
 
 		/* Primo Job: esegue il join tra i due file in input */
 		Configuration conf = new Configuration();
-		Job job = Job.getInstance(conf, "Directors250TopMovies_join");
+		Job job = Job.getInstance(conf, "Keywords250TopMovies_join");
 
-		job.setJarByClass(Directors250TopMovies.class);
-		job.setMapperClass(Directors250TopMoviesJoinMapper.class);
+		job.setJarByClass(Keywords250TopMovies.class);
+		job.setMapperClass(Keywords250TopMoviesJoinMapper.class);
 
-		job.setReducerClass(Directors250TopMoviesJoinReducer.class);
+		job.setReducerClass(Keywords250TopMoviesJoinReducer.class);
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(Text.class);
@@ -46,15 +46,15 @@ public class Directors250TopMovies {
 		
 		
 		
-		/* Secondo Job: conta i film per ciascun regista */
+		/* Secondo Job: conta i film per ciascuna keyword */
 		Configuration conf2 = new Configuration();
-		Job job2 = Job.getInstance(conf2, "Directors250TopMovies_count");
+		Job job2 = Job.getInstance(conf2, "Keywords250TopMovies_count");
 
-		job2.setJarByClass(Directors250TopMovies.class);
-		job2.setMapperClass(Directors250TopMoviesCountMapper.class);
+		job2.setJarByClass(Keywords250TopMovies.class);
+		job2.setMapperClass(Keywords250TopMoviesCountMapper.class);
 
 		job2.setNumReduceTasks(1);
-		job2.setReducerClass(Directors250TopMoviesCountReducer.class);
+		job2.setReducerClass(Keywords250TopMoviesCountReducer.class);
 
 		job2.setOutputKeyClass(Text.class);
 		job2.setOutputValueClass(IntWritable.class);
