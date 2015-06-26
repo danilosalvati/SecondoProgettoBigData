@@ -19,7 +19,7 @@
 CREATE TABLE IF NOT EXISTS actorsRAW (actor STRING, rowFilm STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA LOCAL INPATH '../../actors-formatted' OVERWRITE INTO TABLE actorsRAW;
+LOAD DATA INPATH '/input/actorsENDVALUE.list' OVERWRITE INTO TABLE actorsRAW;
 
 CREATE TABLE IF NOT EXISTS actors (actor STRING, filmArray ARRAY<STRING>);
 
@@ -36,7 +36,7 @@ DROP TABLE actorsRaw;
 CREATE TABLE IF NOT EXISTS actressesRAW (actress STRING, rowFilm STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA LOCAL INPATH '../../actresses-formatted' OVERWRITE INTO TABLE actressesRAW;
+LOAD DATA INPATH '/input/actressesENDVALUE.list' OVERWRITE INTO TABLE actressesRAW;
 
 CREATE TABLE IF NOT EXISTS actresses (actress STRING, filmArray ARRAY<STRING>);
 
@@ -53,7 +53,7 @@ DROP TABLE actressesRAW;
 CREATE TABLE IF NOT EXISTS countries (title STRING, nation STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA LOCAL INPATH '../../countries-formatted' OVERWRITE INTO TABLE countries;
+LOAD DATA INPATH '/input/countriesENDVALUE.list' OVERWRITE INTO TABLE countries;
 
 --
 -- Carico la tabella dei registi --
@@ -62,7 +62,7 @@ LOAD DATA LOCAL INPATH '../../countries-formatted' OVERWRITE INTO TABLE countrie
 CREATE TABLE IF NOT EXISTS directorsRAW (director STRING, rowFilm STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA LOCAL INPATH '../../directors-formatted' OVERWRITE INTO TABLE directorsRAW;
+LOAD DATA INPATH '/input/directorsENDVALUE.list' OVERWRITE INTO TABLE directorsRAW;
 
 CREATE TABLE IF NOT EXISTS directors (director STRING, filmArray ARRAY<STRING>);
 
@@ -79,7 +79,7 @@ DROP TABLE directorsRAW;
 CREATE TABLE IF NOT EXISTS movies (title STRING, year STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA LOCAL INPATH '../../movies-formatted' OVERWRITE INTO TABLE movies;
+LOAD DATA INPATH '/input/moviesENDVALUE.list' OVERWRITE INTO TABLE movies;
 
 --
 -- Carico la tabella dei produttori --
@@ -88,7 +88,7 @@ LOAD DATA LOCAL INPATH '../../movies-formatted' OVERWRITE INTO TABLE movies;
 CREATE TABLE IF NOT EXISTS producersRAW (producer STRING, rowFilm STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA LOCAL INPATH '../../producers-formatted' OVERWRITE INTO TABLE producersRAW;
+LOAD DATA INPATH '/input/producersENDVALUE.list' OVERWRITE INTO TABLE producersRAW;
 
 CREATE TABLE IF NOT EXISTS producers (producer STRING, filmArray ARRAY<STRING>);
 
@@ -105,7 +105,7 @@ DROP TABLE producersRAW;
 CREATE TABLE IF NOT EXISTS quotesRAW (film STRING, rowQuotes STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA LOCAL INPATH '../../quotes-formatted' OVERWRITE INTO TABLE quotesRAW;
+LOAD DATA INPATH '/input/quotesENDVALUE.list' OVERWRITE INTO TABLE quotesRAW;
 
 CREATE TABLE IF NOT EXISTS quotes (film STRING, quotesArray ARRAY<STRING>);
 
@@ -119,22 +119,10 @@ DROP TABLE quotesRaw;
 -- Carico la tabella dei ratings --
 --
 
-CREATE TABLE IF NOT EXISTS ratingsRAW (row STRING);
-
-LOAD DATA LOCAL INPATH '../../ratings' OVERWRITE INTO TABLE ratingsRAW;
-
-CREATE VIEW IF NOT EXISTS ratingsArray (new, rowArray)
-AS SELECT row, rowArray
-FROM (SELECT row, split(row,'  ') as rowArray FROM ratingsRAW) as ratingsTmp;
-
-CREATE TABLE IF NOT EXISTS ratings (title STRING, rank FLOAT);
-
-INSERT INTO TABLE ratings
-SELECT title, rank
-FROM (SELECT rowArray[6] as title, substr(rowArray[5], 2, length(rowArray[5]) - 1) as rank FROM ratingsArray) as ratingsTmp;
-
-DROP TABLE ratingsRAW;
-DROP VIEW ratingsArray;
+CREATE TABLE IF NOT EXISTS ratings (distribution STRING, votes STRING, rank STRING, title STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+    
+LOAD DATA INPATH '/input/top250movies.list' OVERWRITE INTO TABLE ratings;
 
 --
 -- Carico la tabella delle keywords
@@ -143,7 +131,7 @@ DROP VIEW ratingsArray;
 CREATE TABLE IF NOT EXISTS keywords (film STRING, keyword STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA LOCAL INPATH '../../keywords-formatted' OVERWRITE INTO TABLE keywords;
+LOAD DATA INPATH '/input/keywordsENDVALUE.list' OVERWRITE INTO TABLE keywords;
 
 --
 -- Carico la tabella dei generi --
@@ -152,7 +140,7 @@ LOAD DATA LOCAL INPATH '../../keywords-formatted' OVERWRITE INTO TABLE keywords;
 CREATE TABLE IF NOT EXISTS genres (film STRING, genre STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA LOCAL INPATH '../../genres-formatted' OVERWRITE INTO TABLE genres;
+LOAD DATA INPATH '/input/genresENDVALUE.list' OVERWRITE INTO TABLE genres;
 
 
 -------------------------------------------------------------------------------
@@ -180,7 +168,7 @@ FROM actresses;
 -- Da questa tabella seleziono i primi 10 --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/ProlificActors'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/ProlificActors'
 SELECT name, size(filmArray) as numFilm
 FROM all_actors
 SORT BY numFilm DESC
@@ -190,7 +178,7 @@ LIMIT 10;
 -- Adesso seleziono l'anno piu' prolifico --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/ProlificYears'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/ProlificYears'
 SELECT year, COUNT(*) as numFilms
 FROM movies
 GROUP BY year
@@ -204,27 +192,29 @@ LIMIT 1;
 add jar ArrayContainsSubstringUDF.jar;
 CREATE TEMPORARY FUNCTION array_contains_substring AS 'it.uniroma3.bigDataProject.ArrayContainsSubstringUDF';
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestActors'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestActors'
 SELECT name, COUNT(*) as numFilms
 FROM all_actors, ratings
 WHERE array_contains_substring(title,filmArray)
-GROUP BY name;
+GROUP BY name
+ORDER BY numFilms DESC;
 
 --
 -- Faccio la stessa cosa per i registi --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestDirectors'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestDirectors'
 SELECT director, COUNT(*) as numFilms
 FROM directors, ratings
 WHERE array_contains_substring(title,filmArray)
-GROUP BY director;
+GROUP BY director
+ORDER BY numFilms DESC;
 
 --
 -- Estraggo le nazioni che compaiono tra i miglior film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestCountries'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestCountries'
 SELECT nation, COUNT(*) as numFilms
 FROM ratings, countries
 WHERE ratings.title=countries.title
@@ -235,16 +225,17 @@ ORDER BY numFilms DESC;
 -- Estraggo i film di successo per ogni produttore --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestProducers'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestProducers'
 SELECT producer, COUNT(*) as numFilms
 FROM ratings, producers
 WHERE array_contains_substring(title,filmArray)
-GROUP BY producer;
+GROUP BY producer
+SORT BY numFilms DESC;
 
 --
 -- Numero di film prodotti per ciascun anno in ogni nazione --
 --
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/FilmPerYearNations'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/FilmPerYearNations'
 SELECT nation, year, COUNT(*) as numFilms
 FROM movies, countries
 WHERE movies.title=countries.title
@@ -254,7 +245,7 @@ GROUP BY nation, year;
 -- Numero di citazioni per i migliori film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesQuotes'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestMoviesQuotes'
 SELECT film, size(quotesArray) as numQuotes
 FROM ratings,quotes
 WHERE ratings.title=quotes.film
@@ -265,7 +256,7 @@ SORT BY numQuotes DESC;
 -- Le prime 100 Keywords per i migliori film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesKeywords'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestMoviesKeywords'
 SELECT keyword, COUNT(*) as numFilms
 FROM ratings,keywords
 WHERE ratings.title=keywords.film
@@ -274,10 +265,10 @@ SORT BY numFilms DESC
 LIMIT 100;
 
 --
--- Generi dei migilor film di sempre --
+-- Generi dei miglior film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesGenres'
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestMoviesGenres'
 SELECT genre, COUNT(*) as numFilms
 FROM ratings,genres
 WHERE ratings.title=genres.film

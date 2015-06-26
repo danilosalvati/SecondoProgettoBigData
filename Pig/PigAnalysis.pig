@@ -7,42 +7,42 @@
 ***************************************************************************************/
 
 /* Carico gli attori */
-actorsRAW = LOAD '../../actors-formatted' AS (actor: chararray, rowFilm: chararray);
+actorsRAW = LOAD 'hdfs:/input/actorsENDVALUE.list' AS (actor: chararray, rowFilm: chararray);
 actors = FOREACH actorsRAW GENERATE actor, STRSPLIT(rowFilm, '<ENDVALUE>', 0)  as filmArray;
 
 /* Carico le attrici*/
-actressesRAW = LOAD '../../actresses-formatted' AS (actress: chararray, rowFilm: chararray);
+actressesRAW = LOAD 'hdfs:/input/actressesENDVALUE.list' AS (actress: chararray, rowFilm: chararray);
 actresses = FOREACH actressesRAW GENERATE actress, STRSPLIT(rowFilm, '<ENDVALUE>', 0)  as filmArray;
 
 /* Unisco attori e attrici */
 allActors = UNION actors, actresses;
 
 /* Carico i film */
-movies = LOAD '../../movies-formatted' AS (title: chararray, year: chararray);
+movies = LOAD 'hdfs:/input/moviesENDVALUE.list' AS (title: chararray, year: chararray);
 
 /* Carico i 250 film piu' importanti */
-ratings = LOAD '../../top250films.list' AS (distribution: chararray, votes: chararray, rank: chararray, title: chararray);
+ratings = LOAD 'hdfs:/input/top250movies.list' AS (distribution: chararray, votes: chararray, rank: chararray, title: chararray);
 
 /* Carico i registi */
-directorsRAW = LOAD '../../directors-formatted' AS (director: chararray, rowFilm: chararray);
+directorsRAW = LOAD 'hdfs:/input/directorsENDVALUE.list' AS (director: chararray, rowFilm: chararray);
 directors = FOREACH directorsRAW GENERATE director, STRSPLIT(rowFilm, '<ENDVALUE>', 0)  as filmArray;
 
 /* Carico i produttori */
-producersRAW = LOAD '../../producers-formatted' AS (producer: chararray, rowFilm: chararray);
+producersRAW = LOAD 'hdfs:/input/producersENDVALUE.list' AS (producer: chararray, rowFilm: chararray);
 producers = FOREACH producersRAW GENERATE producer, STRSPLIT(rowFilm, '<ENDVALUE>', 0)  as filmArray;
 
 /* Carico le nazioni */
-countries = LOAD '../../countries-formatted' AS (title:chararray, nation: chararray);
+countries = LOAD 'hdfs:/input/countriesENDVALUE.list' AS (title:chararray, nation: chararray);
 
 /* Carico le citazioni */
-quotesRAW = LOAD '../../quotes-formatted' AS (film: chararray, rowQuotes: chararray);
+quotesRAW = LOAD 'hdfs:/input/quotesENDVALUE.list' AS (film: chararray, rowQuotes: chararray);
 quotes = FOREACH quotesRAW GENERATE film, STRSPLIT(rowQuotes, '<ENDVALUE>', 0)  as quotesArray;
 
 /* Carico le keywords */
-keywords = LOAD '../../keywords-formatted' AS (film:chararray, keyword: chararray);
+keywords = LOAD 'hdfs:/input/keywordsENDVALUE.list' AS (film:chararray, keyword: chararray);
 
 /* Carico i generi */
-genres = LOAD '../../genres-formatted' AS (film:chararray, genre: chararray);
+genres = LOAD 'hdfs:/input/genresENDVALUE.list' AS (film:chararray, genre: chararray);
 
 /**************************************************************************************
 ***************************************************************************************
@@ -72,14 +72,16 @@ allCombinationsActorsAndMovies = CROSS onlyBestMovies,allActors;
 actorsInBestMoviesWithFilms = FILTER allCombinationsActorsAndMovies BY it.uniroma3.bigDataProject.ArrayContainsSubstring($0,$2);
 actorsInBestMoviesGrouped = GROUP actorsInBestMoviesWithFilms BY $1;
 actorsInBestMovies = FOREACH actorsInBestMoviesGrouped GENERATE $0, SIZE($1);
-store actorsInBestMovies into 'Result/BestActors';
+actorsInBestMoviesOrdered = ORDER actorsInBestMovies BY $1 desc;
+store actorsInBestMoviesOrdered into 'Result/BestActors';
 
 /* Trovo i registi che hanno partecipato ai 250 film piu' importanti */
 allCombinationsDirectorsAndMovies = CROSS onlyBestMovies,directors;
 directorsInBestMoviesWithFilms = FILTER allCombinationsDirectorsAndMovies BY it.uniroma3.bigDataProject.ArrayContainsSubstring($0,$2);
 directorsInBestMoviesGrouped = GROUP directorsInBestMoviesWithFilms BY $1;
 directorsInBestMovies = FOREACH directorsInBestMoviesGrouped GENERATE $0, SIZE($1);
-store actorsInBestMovies into 'Result/BestDirectors';
+directorsInBestMoviesOrdered = ORDER directorsInBestMovies BY $1 desc;
+store directorsInBestMoviesOrdered into 'Result/BestDirectors';
 
 /* Trovo le nazioni dei film piu' importanti di sempre */
 bestFilmsAndCountries = JOIN onlyBestMovies BY movieTitle, countries BY title;
@@ -94,7 +96,8 @@ allCombinationsProducersAndMovies = CROSS onlyBestMovies,producers;
 producersInBestMoviesWithFilms = FILTER allCombinationsProducersAndMovies BY it.uniroma3.bigDataProject.ArrayContainsSubstring($0,$2);
 producersInBestMoviesGrouped = GROUP producersInBestMoviesWithFilms BY $1;
 producersInBestMovies = FOREACH producersInBestMoviesGrouped GENERATE $0, SIZE($1);
-store producersInBestMovies into 'Result/BestProducers';
+producersInBestMoviesOrdered = ORDER producersInBestMovies BY $1 desc;
+store producersInBestMoviesOrdered into 'Result/BestProducers';
 
 /* Trovo i film prodotti ogni anno per ciascuna nazione */
 moviesAndCountries = JOIN movies BY title, countries BY title;
@@ -121,5 +124,5 @@ store bestMoviesKeywords into 'Result/BestMoviesKeywords';
 bestMoviesAndGenres = JOIN onlyBestMovies BY movieTitle, genres BY film;
 bestMoviesGenresGrouped = GROUP bestMoviesAndGenres BY $2;
 bestMoviesGenresWithSize = FOREACH bestMoviesGenresGrouped GENERATE $0,SIZE($1) as numFilms;
-bestMoviesGenresOrdered = ORDER bestMoviesGenresWithSize BY numFilms desc;
+bestMoviesGenres = ORDER bestMoviesGenresWithSize BY numFilms desc;
 store bestMoviesGenres into 'Result/BestMoviesGenres';
