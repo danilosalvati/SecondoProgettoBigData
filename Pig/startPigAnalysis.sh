@@ -1,17 +1,17 @@
 #! /bin/bash
 echo
 echo "**************************************************************************"
-echo "************************* Starting hive analysis *************************"
+echo "************************* Starting pig analysis **************************"
 echo "**************************************************************************"
 echo
 
 # Memorizzo anche il tempo impiegato dallo script salvandolo su un file apposito
 mkdir Result
-{ time hive -f hiveAnalysis.hql ; } 2> Result/tmp.txt 
-cat Result/tmp.txt | tail -3 > Result/HiveTime.txt
+{ time pig PigAnalysis.pig; } 2> Result/tmp.txt 
+cat Result/tmp.txt | tail -3 > Result/PigTime.txt
 rm Result/tmp.txt
 # Copio i risultati su s3
-aws s3 cp Result s3://bigmetabucket/IMDb/HIVERESULT/ --recursive
+aws s3 cp Result s3://bigmetabucket/IMDb/PIGRESULT/ --recursive
 # Creo lo zip
-zip -r HIVERESULT.zip Result
-aws s3 cp HIVERESULT.zip s3://bigmetabucket/IMDb/
+zip -r PIGRESULT.zip Result
+aws s3 cp PIGRESULT.zip s3://bigmetabucket/IMDb/
