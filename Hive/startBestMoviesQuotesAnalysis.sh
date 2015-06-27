@@ -6,8 +6,11 @@ echo "**************************************************************************
 echo
 
 # Memorizzo anche il tempo impiegato dallo script salvandolo su un file apposito
+./copyOnhdfs.sh
 mkdir Result/BestMoviesQuotes
-{ time hive -f BestMoviesQuotes.hql ; } 2> Result/BestMoviesQuotes/tmp.txt 
-cat Result/BestMoviesQuotes/tmp.txt | tail -3 > Result/BestMoviesQuotes/HiveBestMoviesQuotesTime.txt
-rm Result/BestMoviesQuotes/tmp.txt
+mkdir Result/Times
+mkdir Result/Times/BestMoviesQuotes
+{ time hive -f BestMoviesQuotes.hql ; } 2> Result/Times/BestMoviesQuotes/tmp.txt 
+cat Result/Times/BestMoviesQuotes/tmp.txt | tail -3 > Result/Times/HiveBestMoviesQuotesTime.txt
+rm -rf Result/Times/BestMoviesQuotes
 echo "Done."
