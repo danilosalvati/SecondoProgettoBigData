@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import MoviesPerYearPerCountry.Pair;
 
-public class MoviesPerYearPerCountryReducer extends
+public class MoviesPerYearPerCountryCountReducer extends
 Reducer<Text, IntWritable, Text, IntWritable> {
 
 	private PriorityQueue<Pair> queue;
@@ -58,5 +58,4 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 					topPair.movies));
 		}
 	}
-
 }

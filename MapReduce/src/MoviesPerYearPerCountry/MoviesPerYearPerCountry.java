@@ -12,35 +12,60 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class MoviesPerYearPerCountry {
 
+	private static final String OUTPUT_PATH = "/intermediate_output_moviesPerYearPerCountry";
+
 	public static void main(String[] args) throws ClassNotFoundException,
 	IOException, InterruptedException {
 
-		if (args.length != 2) {
-			System.err.println("USAGE: <hdfs countries path> <hdfs output path>");
+		if (args.length != 3) {
+			System.err.println("USAGE: <hdfs countries path> <hdfs movies path> <hdfs output path>");
 			System.exit(1);
 		}
 
-
+		/* Primo Job: esegue il join tra i due file in input */
 		Configuration conf = new Configuration();
-		Job job = Job.getInstance(conf, "MoviesPerYearPerCountry");
+		Job job = Job.getInstance(conf, "MoviesPerYearPerCountry_join");
 
 		job.setJarByClass(MoviesPerYearPerCountry.class);
-		job.setMapperClass(MoviesPerYearPerCountryMapper.class);
+		job.setMapperClass(MoviesPerYearPerCountryJoinMapper.class);
 
-		job.setReducerClass(MoviesPerYearPerCountryReducer.class);
-		job.setCombinerClass(MoviesPerYearPerCountryReducer.class);
-		
+		job.setReducerClass(MoviesPerYearPerCountryJoinReducer.class);
+
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(IntWritable.class);
+		job.setOutputValueClass(Text.class);
 
 		try {
 			FileInputFormat.addInputPath(job, new Path(args[0]));
+			FileInputFormat.addInputPath(job, new Path(args[1]));
 		} catch (Exception e) {
 			System.err.println("Error opening input path");
 		}
-		FileOutputFormat.setOutputPath(job, new Path(args[1]));
+		FileOutputFormat.setOutputPath(job, new Path(OUTPUT_PATH));
 
-		System.exit(job.waitForCompletion(true) ? 0 : 1);
+		job.waitForCompletion(true);
+		
+		
+		
+		/* Secondo Job: conta i film per ciascuna nazione per ogni anno */
+		Configuration conf2 = new Configuration();
+		Job job2 = Job.getInstance(conf2, "MoviesPerYearPerCountry_count");
 
+		job2.setJarByClass(MoviesPerYearPerCountry.class);
+		job2.setMapperClass(MoviesPerYearPerCountryCountMapper.class);
+
+		job2.setNumReduceTasks(1);
+		job2.setReducerClass(MoviesPerYearPerCountryCountReducer.class);
+
+		job2.setOutputKeyClass(Text.class);
+		job2.setOutputValueClass(IntWritable.class);
+
+		try {
+			FileInputFormat.addInputPath(job2, new Path(OUTPUT_PATH));
+		} catch (Exception e) {
+			System.err.println("Error opening input path");
+		}
+		FileOutputFormat.setOutputPath(job2, new Path(args[2]));
+
+		System.exit(job2.waitForCompletion(true) ? 0 : 1);
 	}
 }
