@@ -49,7 +49,7 @@ SELECT keyword, COUNT(*) as numFilms
 FROM ratings,keywords
 WHERE ratings.title=keywords.film
 GROUP BY keyword
-SORT BY numFilms DESC
+ORDER BY numFilms DESC
 LIMIT 100;
 
 -------------------------------------------------------------------------------

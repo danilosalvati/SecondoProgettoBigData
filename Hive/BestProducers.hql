@@ -60,7 +60,7 @@ SELECT producer, COUNT(*) as numFilms
 FROM ratings, producers
 WHERE array_contains_substring(title,filmArray)
 GROUP BY producer
-SORT BY numFilms DESC;
+ORDER BY numFilms DESC;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

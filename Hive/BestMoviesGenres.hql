@@ -50,7 +50,7 @@ SELECT genre, COUNT(*) as numFilms
 FROM ratings,genres
 WHERE ratings.title=genres.film
 GROUP BY genre
-SORT BY numFilms DESC;
+ORDER BY numFilms DESC;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

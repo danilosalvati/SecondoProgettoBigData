@@ -171,7 +171,7 @@ FROM actresses;
 INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/ProlificActors'
 SELECT name, size(filmArray) as numFilm
 FROM all_actors
-SORT BY numFilm DESC
+ORDER BY numFilm DESC
 LIMIT 10;
 
 --
@@ -230,7 +230,7 @@ SELECT producer, COUNT(*) as numFilms
 FROM ratings, producers
 WHERE array_contains_substring(title,filmArray)
 GROUP BY producer
-SORT BY numFilms DESC;
+ORDER BY numFilms DESC;
 
 --
 -- Numero di film prodotti per ciascun anno in ogni nazione --
@@ -249,7 +249,7 @@ INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestMoviesQuotes'
 SELECT film, size(quotesArray) as numQuotes
 FROM ratings,quotes
 WHERE ratings.title=quotes.film
-SORT BY numQuotes DESC;
+ORDER BY numQuotes DESC;
 
 
 --
@@ -261,7 +261,7 @@ SELECT keyword, COUNT(*) as numFilms
 FROM ratings,keywords
 WHERE ratings.title=keywords.film
 GROUP BY keyword
-SORT BY numFilms DESC
+ORDER BY numFilms DESC
 LIMIT 100;
 
 --
@@ -273,7 +273,7 @@ SELECT genre, COUNT(*) as numFilms
 FROM ratings,genres
 WHERE ratings.title=genres.film
 GROUP BY genre
-SORT BY numFilms DESC;
+ORDER BY numFilms DESC;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

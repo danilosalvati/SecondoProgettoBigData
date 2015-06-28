@@ -56,7 +56,7 @@ INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesQuotes'
 SELECT film, size(quotesArray) as numQuotes
 FROM ratings,quotes
 WHERE ratings.title=quotes.film
-SORT BY numQuotes DESC;
+ORDER BY numQuotes DESC;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

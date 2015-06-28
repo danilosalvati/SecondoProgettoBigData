@@ -74,7 +74,7 @@ FROM actresses;
 INSERT OVERWRITE LOCAL DIRECTORY 'Result/ProlificActors'
 SELECT name, size(filmArray) as numFilm
 FROM all_actors
-SORT BY numFilm DESC
+ORDER BY numFilm DESC
 LIMIT 10;
 
 -------------------------------------------------------------------------------
