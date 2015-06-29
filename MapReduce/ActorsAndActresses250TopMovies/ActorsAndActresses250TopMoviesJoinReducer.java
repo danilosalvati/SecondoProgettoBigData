@@ -25,7 +25,8 @@ Reducer<Text, Text, Text, Text> {
 		if (result.contains("<TOJOIN>")) {
 			result = result.replace("<TOJOIN><ENDVALUE>", "");
 			result = result.replace("<ENDVALUE><TOJOIN>", "");
-			
+			result = result.replace("<TOJOIN>", "");
+
 			context.write(key, new Text(result));
 		}
 
