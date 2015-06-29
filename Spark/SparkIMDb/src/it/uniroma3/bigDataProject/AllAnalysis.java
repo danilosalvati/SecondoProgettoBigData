@@ -158,7 +158,7 @@ public class AllAnalysis {
 
 		Row[] results = sqlContext.sql(
 				"SELECT name, size(filmArray) as numFilm " + "FROM all_actors "
-						+ "SORT BY numFilm DESC " + "LIMIT 10").collect();
+						+ "ORDER BY numFilm DESC " + "LIMIT 10").collect();
 
 		try {
 			File folder = new File("Result/");
@@ -188,7 +188,7 @@ public class AllAnalysis {
 			folder.mkdir();
 			PrintWriter out = new PrintWriter("Result/ProlificYears.txt");
 			for (Row result : results) {
-				out.println(result.getString(0) + "\t" + result.getInt(1));
+				out.println(result.getString(0) + "\t" + result.getLong(1));
 			}
 
 			out.close();
@@ -217,7 +217,7 @@ public class AllAnalysis {
 			folder.mkdir();
 			PrintWriter out = new PrintWriter("Result/BestActors.txt");
 			for (Row result : results) {
-				out.println(result.getString(0) + "\t" + result.getInt(1));
+				out.println(result.getString(0) + "\t" + result.getLong(1));
 			}
 
 			out.close();
@@ -246,7 +246,7 @@ public class AllAnalysis {
 			folder.mkdir();
 			PrintWriter out = new PrintWriter("Result/BestDirectors.txt");
 			for (Row result : results) {
-				out.println(result.getString(0) + "\t" + result.getInt(1));
+				out.println(result.getString(0) + "\t" + result.getLong(1));
 			}
 
 			out.close();
@@ -271,7 +271,7 @@ public class AllAnalysis {
 			folder.mkdir();
 			PrintWriter out = new PrintWriter("Result/BestCountries.txt");
 			for (Row result : results) {
-				out.println(result.getString(0) + "\t" + result.getInt(1));
+				out.println(result.getString(0) + "\t" + result.getLong(1));
 			}
 
 			out.close();
@@ -300,7 +300,7 @@ public class AllAnalysis {
 			folder.mkdir();
 			PrintWriter out = new PrintWriter("Result/BestProducers.txt");
 			for (Row result : results) {
-				out.println(result.getString(0) + "\t" + result.getInt(1));
+				out.println(result.getString(0) + "\t" + result.getLong(1));
 			}
 
 			out.close();
@@ -325,7 +325,7 @@ public class AllAnalysis {
 			PrintWriter out = new PrintWriter(
 					"Result/FilmPerYearPerNations.txt");
 			for (Row result : results) {
-				out.println(result.getString(0) + "\t" + result.getInt(1));
+				out.println(result.getString(0) + "\t" + result.getLong(1));
 			}
 
 			out.close();
@@ -342,7 +342,7 @@ public class AllAnalysis {
 				"SELECT film, size(quotesArray) as numQuotes "
 						+ "FROM ratings, quotes "
 						+ "WHERE ratings.title=quotes.film "
-						+ "SORT BY numQuotes DESC").collect();
+						+ "ORDER BY numQuotes DESC").collect();
 
 		try {
 			File folder = new File("Result/");
@@ -374,7 +374,7 @@ public class AllAnalysis {
 			folder.mkdir();
 			PrintWriter out = new PrintWriter("Result/BestMoviesKeywords.txt");
 			for (Row result : results) {
-				out.println(result.getString(0) + "\t" + result.getInt(1));
+				out.println(result.getString(0) + "\t" + result.getLong(1));
 			}
 
 			out.close();
@@ -390,7 +390,7 @@ public class AllAnalysis {
 		Row[] results = sqlContext.sql(
 				"SELECT genre, COUNT(*) as numFilms " + "FROM ratings, genres "
 						+ "WHERE ratings.title=genres.film "
-						+ "GROUP BY genre " + "SORT BY numFilms DESC")
+						+ "GROUP BY genre " + "ORDER BY numFilms DESC")
 				.collect();
 
 		try {
@@ -398,7 +398,7 @@ public class AllAnalysis {
 			folder.mkdir();
 			PrintWriter out = new PrintWriter("Result/BestMoviesGenres.txt");
 			for (Row result : results) {
-				out.println(result.getString(0) + "\t" + result.getInt(1));
+				out.println(result.getString(0) + "\t" + result.getLong(1));
 			}
 
 			out.close();
