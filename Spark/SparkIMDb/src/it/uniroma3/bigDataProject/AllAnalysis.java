@@ -314,7 +314,7 @@ public class AllAnalysis {
 	private void FilmPerYearPerNations(HiveContext sqlContext) {
 
 		Row[] results = sqlContext.sql(
-				"SELECT producer, COUNT(*) as numFilms "
+				"SELECT nation, year, COUNT(*) as numFilms "
 						+ "FROM movies, countries "
 						+ "WHERE movies.title=countries.title "
 						+ "GROUP BY nation, year").collect();
@@ -325,7 +325,8 @@ public class AllAnalysis {
 			PrintWriter out = new PrintWriter(
 					"Result/FilmPerYearPerNations.txt");
 			for (Row result : results) {
-				out.println(result.getString(0) + "\t" + result.getLong(1));
+				out.println(result.getString(0) + "\t" + result.getString(1)
+						+ "\t" + result.getLong(2));
 			}
 
 			out.close();
