@@ -1,4 +1,4 @@
-package Directors250TopMovies;
+package Producers250TopMovies;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-import Directors250TopMovies.Pair;
+import Producers250TopMovies.Pair;
 
-public class Directors250TopMoviesCountReducer extends
+public class Producers250TopMoviesReducer extends
 		Reducer<Text, IntWritable, Text, IntWritable> {
 
 	private PriorityQueue<Pair> queue;
@@ -54,7 +54,7 @@ public class Directors250TopMoviesCountReducer extends
 		/* Riestraggo gli elementi al contrario per avere il giusto ordinamento */
 		for (int i = topPairs.size() - 1; i >= 0; i--) {
 			Pair topPair = topPairs.get(i);
-			context.write(new Text(topPair.director), new IntWritable(
+			context.write(new Text(topPair.producer), new IntWritable(
 					topPair.movies));
 		}
 	}
