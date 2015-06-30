@@ -13,8 +13,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import Directors250TopMovies.Pair;
 
 public class Directors250TopMoviesCountReducer extends
-Reducer<Text, IntWritable, Text, IntWritable> {
-
+		Reducer<Text, IntWritable, Text, IntWritable> {
 
 	private PriorityQueue<Pair> queue;
 
@@ -46,7 +45,7 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 	 */
 	@Override
 	protected void cleanup(Context context) throws IOException,
-	InterruptedException {
+			InterruptedException {
 		List<Pair> topPairs = new ArrayList<Pair>();
 		while (!queue.isEmpty()) {
 			topPairs.add(queue.remove());

@@ -14,7 +14,7 @@ import MostProlificYear.Pair;
 
 public class MostProlificYearReducer extends
 		Reducer<Text, IntWritable, Text, IntWritable> {
-	
+
 	private static final int TOP_K = 1;
 	private PriorityQueue<Pair> queue;
 
@@ -30,15 +30,15 @@ public class MostProlificYearReducer extends
 	public void reduce(Text key, Iterable<IntWritable> values, Context context)
 			throws IOException, InterruptedException {
 
-		/* Incremento il numero di film*/
+		/* Incremento il numero di film */
 		int moviesNumber = 0;
 		for (IntWritable value : values) {
 			moviesNumber = moviesNumber + value.get();
 		}
-		
+
 		/* Aggiungo la coppia alla coda ed elimino gli elementi eccedenti */
 		queue.add(new Pair(key.toString(), moviesNumber));
-		
+
 		if (queue.size() > TOP_K) {
 			queue.remove();
 		}
@@ -52,13 +52,13 @@ public class MostProlificYearReducer extends
 	@Override
 	protected void cleanup(Context context) throws IOException,
 			InterruptedException {
-		
+
 		List<Pair> mostProlificYear = new ArrayList<Pair>();
-		
+
 		while (!queue.isEmpty()) {
 			mostProlificYear.add(queue.remove());
 		}
-		
+
 		/* Riestraggo gli elementi al contrario per avere il giusto ordinamento */
 		for (int i = mostProlificYear.size() - 1; i >= 0; i--) {
 			Pair topKPair = mostProlificYear.get(i);

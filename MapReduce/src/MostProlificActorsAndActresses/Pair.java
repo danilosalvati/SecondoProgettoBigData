@@ -6,7 +6,7 @@ package MostProlificActorsAndActresses;
  *
  */
 public class Pair {
-	
+
 	public String actor;
 	public Integer moviesNumber;
 

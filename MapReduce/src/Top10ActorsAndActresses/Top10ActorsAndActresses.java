@@ -16,7 +16,8 @@ public class Top10ActorsAndActresses {
 			IOException, InterruptedException {
 
 		if (args.length != 3) {
-			System.err.println("USAGE: <hdfs actors path> <hdfs actresses path> <hdfs output path>");
+			System.err
+					.println("USAGE: <hdfs actors path> <hdfs actresses path> <hdfs output path>");
 			System.exit(1);
 		}
 
@@ -27,7 +28,8 @@ public class Top10ActorsAndActresses {
 		job.setMapperClass(Top10ActorsAndActressesMapper.class);
 		job.setCombinerClass(Top10ActorsAndActressesReducer.class);
 
-		job.setNumReduceTasks(1); // un solo reducer per evitare che ognuno calcoli la sua top 10
+		job.setNumReduceTasks(1); // un solo reducer per evitare che ognuno
+									// calcoli la sua top 10
 		job.setReducerClass(Top10ActorsAndActressesReducer.class);
 
 		job.setOutputKeyClass(Text.class);

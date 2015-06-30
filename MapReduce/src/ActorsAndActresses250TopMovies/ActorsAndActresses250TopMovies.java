@@ -13,10 +13,11 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class ActorsAndActresses250TopMovies {
 
 	public static void main(String[] args) throws ClassNotFoundException,
-	IOException, InterruptedException {
+			IOException, InterruptedException {
 
 		if (args.length != 3) {
-			System.err.println("USAGE: <hdfs actors path> <hdfs actresses path> <hdfs output path>");
+			System.err
+					.println("USAGE: <hdfs actors path> <hdfs actresses path> <hdfs output path>");
 			System.exit(1);
 		}
 
@@ -30,7 +31,7 @@ public class ActorsAndActresses250TopMovies {
 
 		job.setReducerClass(ActorsAndActresses250TopMoviesReducer.class);
 		job.setCombinerClass(ActorsAndActresses250TopMoviesReducer.class);
-		
+
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
 

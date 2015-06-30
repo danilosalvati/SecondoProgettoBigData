@@ -72,6 +72,7 @@ public class ActorsAndActresses250TopMoviesMapper extends
 				/* Controllo se il film è nei top 250 */
 				boolean found = false;
 				int listSize = top250movies.size();
+
 				for (int i = 0; i < listSize && !found; i++) {
 					if (movie.startsWith(top250movies.get(i))) {
 						moviesFound.add(top250movies.get(i));
@@ -85,6 +86,7 @@ public class ActorsAndActresses250TopMoviesMapper extends
 
 			boolean found = false;
 			int listSize = top250movies.size();
+
 			for (int i = 0; i < listSize && !found; i++) {
 				if (values[1].startsWith(top250movies.get(i))) {
 					moviesFound.add(top250movies.get(i));
@@ -93,6 +95,7 @@ public class ActorsAndActresses250TopMoviesMapper extends
 			}
 
 		}
+
 		if (moviesFound.size() != 0) {
 			context.write(new Text(values[0]),
 					new IntWritable(moviesFound.size()));

@@ -6,7 +6,7 @@ package MostProlificYear;
  *
  */
 public class Pair {
-	
+
 	public String year;
 	public Integer moviesNumber;
 

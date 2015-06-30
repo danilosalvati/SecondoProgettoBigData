@@ -27,7 +27,8 @@ public class MostProlificYear {
 		job.setMapperClass(MostProlificYearMapper.class);
 		job.setCombinerClass(MostProlificYearReducer.class);
 
-		job.setNumReduceTasks(1); // un solo reducer per evitare che ognuno calcoli il suo top
+		job.setNumReduceTasks(1); // un solo reducer per evitare che ognuno
+									// calcoli il suo top
 		job.setReducerClass(MostProlificYearReducer.class);
 
 		job.setOutputKeyClass(Text.class);

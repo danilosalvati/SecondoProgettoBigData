@@ -15,10 +15,11 @@ public class Producers250TopMovies {
 	private static final String OUTPUT_PATH = "/intermediate_output_producers";
 
 	public static void main(String[] args) throws ClassNotFoundException,
-	IOException, InterruptedException {
+			IOException, InterruptedException {
 
 		if (args.length != 3) {
-			System.err.println("USAGE: <hdfs producers path> <hdfs top250movies path> <hdfs output path>");
+			System.err
+					.println("USAGE: <hdfs producers path> <hdfs top250movies path> <hdfs output path>");
 			System.exit(1);
 		}
 
@@ -43,9 +44,7 @@ public class Producers250TopMovies {
 		FileOutputFormat.setOutputPath(job, new Path(OUTPUT_PATH));
 
 		job.waitForCompletion(true);
-		
-		
-		
+
 		/* Secondo Job: conta i film per ciascun produttore */
 		Configuration conf2 = new Configuration();
 		Job job2 = Job.getInstance(conf2, "Producers250TopMovies_count");

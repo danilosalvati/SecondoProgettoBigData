@@ -15,10 +15,11 @@ public class MoviesPerYearPerCountry {
 	private static final String OUTPUT_PATH = "/intermediate_output_moviesPerYearPerCountry";
 
 	public static void main(String[] args) throws ClassNotFoundException,
-	IOException, InterruptedException {
+			IOException, InterruptedException {
 
 		if (args.length != 3) {
-			System.err.println("USAGE: <hdfs countries path> <hdfs movies path> <hdfs output path>");
+			System.err
+					.println("USAGE: <hdfs countries path> <hdfs movies path> <hdfs output path>");
 			System.exit(1);
 		}
 
@@ -43,9 +44,7 @@ public class MoviesPerYearPerCountry {
 		FileOutputFormat.setOutputPath(job, new Path(OUTPUT_PATH));
 
 		job.waitForCompletion(true);
-		
-		
-		
+
 		/* Secondo Job: conta i film per ciascuna nazione per ogni anno */
 		Configuration conf2 = new Configuration();
 		Job job2 = Job.getInstance(conf2, "MoviesPerYearPerCountry_count");

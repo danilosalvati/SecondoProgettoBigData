@@ -7,12 +7,12 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 /**
- * Il mapper costruisce le coppie (produttore, 1)
- * e le invia al reducer che fa la somma
+ * Il mapper costruisce le coppie (produttore, 1) e le invia al reducer che fa
+ * la somma
  *
  */
 public class Producers250TopMoviesCountMapper extends
-Mapper<Object, Text, Text, IntWritable> {
+		Mapper<Object, Text, Text, IntWritable> {
 
 	private static final IntWritable one = new IntWritable(1);
 
@@ -22,10 +22,10 @@ Mapper<Object, Text, Text, IntWritable> {
 		/* Per prima cosa divido l'input in maniera opportuna */
 		String[] values = value.toString().split("\t");
 		String[] producers = values[1].toString().split("<ENDVALUE>");
-		
+
 		for (String producer : producers) {
 			context.write(new Text(producer), one);
 		}
-		
+
 	}
 }

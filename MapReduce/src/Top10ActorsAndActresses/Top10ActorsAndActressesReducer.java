@@ -14,7 +14,7 @@ import Top10ActorsAndActresses.Pair;
 
 public class Top10ActorsAndActressesReducer extends
 		Reducer<Text, IntWritable, Text, IntWritable> {
-	
+
 	private static final int TOP_K = 10;
 	private PriorityQueue<Pair> queue;
 
@@ -30,15 +30,15 @@ public class Top10ActorsAndActressesReducer extends
 	public void reduce(Text key, Iterable<IntWritable> values, Context context)
 			throws IOException, InterruptedException {
 
-		/* Incremento il numero di film*/
+		/* Incremento il numero di film */
 		int moviesNumber = 0;
 		for (IntWritable value : values) {
 			moviesNumber = moviesNumber + value.get();
 		}
-		
+
 		/* Aggiungo la coppia alla coda ed elimino gli elementi eccedenti */
 		queue.add(new Pair(key.toString(), moviesNumber));
-		
+
 		if (queue.size() > TOP_K) {
 			queue.remove();
 		}
@@ -52,13 +52,13 @@ public class Top10ActorsAndActressesReducer extends
 	@Override
 	protected void cleanup(Context context) throws IOException,
 			InterruptedException {
-		
+
 		List<Pair> topKActorsAndActresses = new ArrayList<Pair>();
-		
+
 		while (!queue.isEmpty()) {
 			topKActorsAndActresses.add(queue.remove());
 		}
-		
+
 		/* Riestraggo gli elementi al contrario per avere il giusto ordinamento */
 		for (int i = topKActorsAndActresses.size() - 1; i >= 0; i--) {
 			Pair topKPair = topKActorsAndActresses.get(i);

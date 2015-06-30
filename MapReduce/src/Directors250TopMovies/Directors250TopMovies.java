@@ -15,10 +15,11 @@ public class Directors250TopMovies {
 	private static final String OUTPUT_PATH = "/intermediate_output_directors";
 
 	public static void main(String[] args) throws ClassNotFoundException,
-	IOException, InterruptedException {
+			IOException, InterruptedException {
 
 		if (args.length != 3) {
-			System.err.println("USAGE: <hdfs directors path> <hdfs top250movies path> <hdfs output path>");
+			System.err
+					.println("USAGE: <hdfs directors path> <hdfs top250movies path> <hdfs output path>");
 			System.exit(1);
 		}
 
@@ -43,9 +44,7 @@ public class Directors250TopMovies {
 		FileOutputFormat.setOutputPath(job, new Path(OUTPUT_PATH));
 
 		job.waitForCompletion(true);
-		
-		
-		
+
 		/* Secondo Job: conta i film per ciascun regista */
 		Configuration conf2 = new Configuration();
 		Job job2 = Job.getInstance(conf2, "Directors250TopMovies_count");
