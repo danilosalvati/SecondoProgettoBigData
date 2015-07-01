@@ -1,0 +1,5 @@
+Come per Spark anche in questo caso sono stati riutilizzati i costrutti di hive.
+Per via di un bug (probabilmente dovuto a questa versione di hive) l'analisi completa non funziona (ma avevamo lo stesso problema per spark)
+
+Per l'installazione ho seguito questa guida:
+https://forums.aws.amazon.com/thread.jspa?threadID=170560

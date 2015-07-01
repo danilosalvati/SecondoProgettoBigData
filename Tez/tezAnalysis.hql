@@ -11,7 +11,7 @@
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
-
+SET hive.execution.engine=tez;
 --
 -- Carico la tabella degli attori --
 --
@@ -246,7 +246,7 @@ GROUP BY nation, year;
 --
 
 INSERT OVERWRITE LOCAL DIRECTORY 'Result/AllAnalysis/BestMoviesQuotes'
-SELECT film, (size(quotesArray)-1) as numQuotes
+SELECT film, size(quotesArray) as numQuotes
 FROM ratings,quotes
 WHERE ratings.title=quotes.film
 ORDER BY numQuotes DESC;

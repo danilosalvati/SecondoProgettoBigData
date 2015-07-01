@@ -1,0 +1,4 @@
+Questa parte del progetto effetuale analisi con spark sql utilizzando i medesimi costrutti di hive immersi in un programma java. L'UDF è stato modificato affinché utilizzasse le classi java al posto di quelle di hadoop (ad esempio String al posto di Text).
+Qui sono sempre presenti i due script per far partire le singole analisi e quella completa. Tuttavia l'analisi dei migliori attori non funziona perché troppo onerosa (con delle macchine r extra large ci mette quattro ore...) per cui gli script vanno invocati a mano (ricordando di creare la cartella Result prima di iniziare) ed è necessario rinunciare all'analisi completa
+
+Per installare spark su aws è necessario avere l'AMI 3.8 ed è necessario dare l'opzione -x (così gli esecutori prendono tutta la memoria disponibile) (come evidenziato da https://aws.amazon.com/it/blogs/aws/new-apache-spark-on-amazon-emr/)

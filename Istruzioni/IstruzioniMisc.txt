@@ -1,0 +1,6 @@
+I file nella cartella Misc sono script di supporto per l'esecuzione dei test:
+- copyAllFiles.sh: Copia tutti i file di input da s3 alla home
+- copyAllFilesOnMNT.sh: Copia tutti i file di input da s3 alla cartella /mnt
+- CopyOnCluster.sh: Copia i file TarScript.tar.gz e untar.sh nella home (l'archivio contiene tutti gli script da eseguire)
+- untar.sh: Estrare TarScript.tar.gz
+

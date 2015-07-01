@@ -26,7 +26,7 @@ mkdir Result
 ./startProlificYearsAnalysis.sh
 
 # Prendo i file dall'hdfs
-hdfs dfs -get /Result PIGRESULTSSINGLEANALYSISDATA
+hdfs dfs -get Result PIGRESULTSSINGLEANALYSISDATA
 # Creo il file zip con il risultato
 echo "Creating zip file"
 zip -r PIGRESULTSINGLEANALYSIS.zip Result PIGRESULTSSINGLEANALYSISDATA

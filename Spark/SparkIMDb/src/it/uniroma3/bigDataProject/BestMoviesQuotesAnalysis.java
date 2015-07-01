@@ -57,7 +57,7 @@ public class BestMoviesQuotesAnalysis {
 	private void BestMoviesQuotes(HiveContext sqlContext) {
 
 		Row[] results = sqlContext.sql(
-				"SELECT film, size(quotesArray) as numQuotes "
+				"SELECT film, (size(quotesArray)-1) as numQuotes "
 						+ "FROM ratings, quotes "
 						+ "WHERE ratings.title=quotes.film "
 						+ "ORDER BY numQuotes DESC").collect();

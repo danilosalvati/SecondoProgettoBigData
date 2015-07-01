@@ -1,5 +1,5 @@
 ---------------------------------------
----------- BestMoviesQuotes -----------
+------- Tutte le analisi su hive ------
 ---------------------------------------
 
 -------------------------------------------------------------------------------
@@ -11,23 +11,15 @@
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
-
+SET hive.execution.engine=tez;
 --
--- Carico la tabella delle citazioni --
+-- Estraggo le nazioni di produzione dei film --
 --
 
-CREATE TABLE IF NOT EXISTS quotesRAW (film STRING, rowQuotes STRING)
+CREATE TABLE IF NOT EXISTS countries (title STRING, nation STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA INPATH '/input/quotesENDVALUE.list' OVERWRITE INTO TABLE quotesRAW;
-
-CREATE TABLE IF NOT EXISTS quotes (film STRING, quotesArray ARRAY<STRING>);
-
-INSERT INTO TABLE quotes
-SELECT film, quotesArray
-FROM (SELECT film, split(rowQuotes,'<ENDVALUE>') as quotesArray FROM quotesRAW) as quotes2;
-
-DROP TABLE quotesRaw;
+LOAD DATA INPATH '/input/countriesENDVALUE.list' OVERWRITE INTO TABLE countries;
 
 --
 -- Carico la tabella dei ratings --
@@ -49,14 +41,16 @@ LOAD DATA INPATH '/input/top250movies.list' OVERWRITE INTO TABLE ratings;
 -------------------------------------------------------------------------------
 
 --
--- Numero di citazioni per i migliori film di sempre --
+-- Estraggo le nazioni che compaiono tra i miglior film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesQuotes'
-SELECT film, (size(quotesArray)-1) as numQuotes
-FROM ratings,quotes
-WHERE ratings.title=quotes.film
-ORDER BY numQuotes DESC;
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestCountries'
+SELECT nation, COUNT(*) as numFilms
+FROM ratings, countries
+WHERE ratings.title=countries.title
+GROUP BY nation
+ORDER BY numFilms DESC;
+
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -68,5 +62,5 @@ ORDER BY numQuotes DESC;
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
-DROP TABLE quotes;
+DROP TABLE countries;
 DROP TABLE ratings;

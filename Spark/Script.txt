@@ -1,1 +1,0 @@
-spark-submit --class "it.uniroma3.bigDataProject.AllAnalysis" --master yarn-cluster SparkIMDb.jar 

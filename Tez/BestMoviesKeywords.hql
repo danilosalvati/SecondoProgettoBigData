@@ -1,5 +1,5 @@
 ---------------------------------------
----------- BestMoviesQuotes -----------
+---------- BestMoviesKeywords ---------
 ---------------------------------------
 
 -------------------------------------------------------------------------------
@@ -11,24 +11,7 @@
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
-
---
--- Carico la tabella delle citazioni --
---
-
-CREATE TABLE IF NOT EXISTS quotesRAW (film STRING, rowQuotes STRING)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
-
-LOAD DATA INPATH '/input/quotesENDVALUE.list' OVERWRITE INTO TABLE quotesRAW;
-
-CREATE TABLE IF NOT EXISTS quotes (film STRING, quotesArray ARRAY<STRING>);
-
-INSERT INTO TABLE quotes
-SELECT film, quotesArray
-FROM (SELECT film, split(rowQuotes,'<ENDVALUE>') as quotesArray FROM quotesRAW) as quotes2;
-
-DROP TABLE quotesRaw;
-
+SET hive.execution.engine=tez;
 --
 -- Carico la tabella dei ratings --
 --
@@ -37,6 +20,15 @@ CREATE TABLE IF NOT EXISTS ratings (distribution STRING, votes STRING, rank STRI
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
     
 LOAD DATA INPATH '/input/top250movies.list' OVERWRITE INTO TABLE ratings;
+
+--
+-- Carico la tabella delle keywords
+--
+
+CREATE TABLE IF NOT EXISTS keywords (film STRING, keyword STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/keywordsENDVALUE.list' OVERWRITE INTO TABLE keywords;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -49,14 +41,16 @@ LOAD DATA INPATH '/input/top250movies.list' OVERWRITE INTO TABLE ratings;
 -------------------------------------------------------------------------------
 
 --
--- Numero di citazioni per i migliori film di sempre --
+-- Le prime 100 Keywords per i migliori film di sempre --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesQuotes'
-SELECT film, (size(quotesArray)-1) as numQuotes
-FROM ratings,quotes
-WHERE ratings.title=quotes.film
-ORDER BY numQuotes DESC;
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesKeywords'
+SELECT keyword, COUNT(*) as numFilms
+FROM ratings,keywords
+WHERE ratings.title=keywords.film
+GROUP BY keyword
+ORDER BY numFilms DESC
+LIMIT 100;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -68,5 +62,5 @@ ORDER BY numQuotes DESC;
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
-DROP TABLE quotes;
 DROP TABLE ratings;
+DROP TABLE keywords;

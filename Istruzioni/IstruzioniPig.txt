@@ -1,0 +1,1 @@
+Questa porzione del progetto si propone di eseguire i test sul dataset utilizzando pig. La struttura è pressochè quella di hive, solo che in questo caso lo script copyOnhdfs.sh non viene invocato ogni volta perchè non necessario

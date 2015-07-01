@@ -1,5 +1,5 @@
 ---------------------------------------
----------- BestMoviesQuotes -----------
+------------ BestProducers ------------
 ---------------------------------------
 
 -------------------------------------------------------------------------------
@@ -11,23 +11,23 @@
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
-
+SET hive.execution.engine=tez;
 --
--- Carico la tabella delle citazioni --
+-- Carico la tabella dei produttori --
 --
 
-CREATE TABLE IF NOT EXISTS quotesRAW (film STRING, rowQuotes STRING)
+CREATE TABLE IF NOT EXISTS producersRAW (producer STRING, rowFilm STRING)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
 
-LOAD DATA INPATH '/input/quotesENDVALUE.list' OVERWRITE INTO TABLE quotesRAW;
+LOAD DATA INPATH '/input/producersENDVALUE.list' OVERWRITE INTO TABLE producersRAW;
 
-CREATE TABLE IF NOT EXISTS quotes (film STRING, quotesArray ARRAY<STRING>);
+CREATE TABLE IF NOT EXISTS producers (producer STRING, filmArray ARRAY<STRING>);
 
-INSERT INTO TABLE quotes
-SELECT film, quotesArray
-FROM (SELECT film, split(rowQuotes,'<ENDVALUE>') as quotesArray FROM quotesRAW) as quotes2;
+INSERT INTO TABLE producers
+SELECT producer, filmArray
+FROM (SELECT producer, split(rowFilm,'<ENDVALUE>') as filmArray FROM producersRAW) as producers2;
 
-DROP TABLE quotesRaw;
+DROP TABLE producersRAW;
 
 --
 -- Carico la tabella dei ratings --
@@ -49,14 +49,18 @@ LOAD DATA INPATH '/input/top250movies.list' OVERWRITE INTO TABLE ratings;
 -------------------------------------------------------------------------------
 
 --
--- Numero di citazioni per i migliori film di sempre --
+-- Estraggo i film di successo per ogni produttore --
 --
 
-INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestMoviesQuotes'
-SELECT film, (size(quotesArray)-1) as numQuotes
-FROM ratings,quotes
-WHERE ratings.title=quotes.film
-ORDER BY numQuotes DESC;
+add jar ArrayContainsSubstringUDF.jar;
+CREATE TEMPORARY FUNCTION array_contains_substring AS 'it.uniroma3.bigDataProject.ArrayContainsSubstringUDF';
+
+INSERT OVERWRITE LOCAL DIRECTORY 'Result/BestProducers'
+SELECT producer, COUNT(*) as numFilms
+FROM ratings, producers
+WHERE array_contains_substring(title,filmArray)
+GROUP BY producer
+ORDER BY numFilms DESC;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -68,5 +72,5 @@ ORDER BY numQuotes DESC;
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
-DROP TABLE quotes;
+DROP TABLE producers;
 DROP TABLE ratings;

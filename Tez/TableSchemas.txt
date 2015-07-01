@@ -1,0 +1,12 @@
+Raccolgo qui tutti gli schemi usati per le tabelle:
+
+movies(title,year)
+actors(actor, filmArray)
+actresses(actress, filmArray)
+ratings(distribution, votes, rank, title)
+countries(title,nation)
+directors(director, filmArray)
+producers(producer, filmArray)
+quotes(film,quotesArray)
+keywords(film, keyword)
+genres(film,genre)

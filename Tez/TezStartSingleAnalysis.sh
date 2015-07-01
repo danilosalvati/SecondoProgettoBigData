@@ -1,7 +1,7 @@
 #! /bin/bash
 echo
 echo "**************************************************************************"
-echo "************************* Starting hive analysis *************************"
+echo "************************* Starting tez analysis **************************"
 echo "**************************************************************************"
 echo
 
@@ -14,13 +14,20 @@ echo
 mkdir Result
 
 # Avvio gli script
-./startAllPigAnalysis.sh
+./startBestActorsAnalysis.sh
+./startBestCountriesAnalysis.sh
+./startBestDirectorsAnalysis.sh
+./startBestMoviesGenresAnalysis.sh
+./startBestMoviesKeywordsAnalysis.sh
+./startBestMoviesQuotesAnalysis.sh
+./startBestProducersAnalysis.sh
+./startFilmPerYearNationsAnalysis.sh
+./startProlificActorsAnalysis.sh
+./startProlificYearsAnalysis.sh
 
-# Prendo i file dall'hdfs
-hdfs dfs -get Result PIGRESULTSONLYCOMPLETEDATA
 # Creo il file zip con il risultato
 echo "Creating zip file"
-zip -r PIGRESULTONLYCOMPLETE.zip Result PIGRESULTSONLYCOMPLETEDATA
+zip -r TEZRESULTSINGLEANALYSIS.zip Result
 echo "Transferring files on s3"
-aws s3 cp PIGRESULTONLYCOMPLETE.zip s3://bigmetabucket/IMDb/
+aws s3 cp TEZRESULTSINGLEANALYSIS.zip s3://bigmetabucket/IMDb/
 echo "Done."

@@ -1,0 +1,5 @@
+Questa porzione del progetto si compone di diversi script per effettuare le 10 analisi, in particolare possiamo distinguere un file contenente tutte le analisi (hiveAnalysis.hql) ed altri dieci script che le effettuano singolarmente.
+Lo script HiveStart.sh le fa partire tutte andando poi a salvare il risultato su s3. Poichè queste elaborazioni sono particolarmente lunghe (e spesso mandano in crash hadoop) le ho divise in due parti, una avviata dallo script HiveStartOnlyCompleteAnalysis.sh (che fa partire le elaborazioni singole) e l'altra da HiveStartSingleAnalysis.sh (che fa partire l'analisi cumulativa).
+Per la misurazione dei tempi ho usato il programma time di linux ed i risultati sono visibili all'interno delle cartelle.
+Tutti gli script richiedono copyOnhdfs.sh perchè hive muove i file dalla cartella di input verso la sua cartella di lavoro.
+Ovviamente si presuppone che sia già stato invocato lo script copyAllFilesOnMNT.sh della cartella Misc (che si occupa di copiare gli script da s3 nella cartella mnt)
