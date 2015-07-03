@@ -1,0 +1,84 @@
+Installazione:
+https://github.com/awslabs/emr-bootstrap-actions/tree/master/presto
+(vedere sezione "Sample Usage")
+
+
+
+Per l'utilizzo:
+1) usare Hive per creare le tabelle
+2) usare Presto per effettuare l'analisi
+
+	./presto --server localhost:8080 --catalog hive --schema default
+	(per avviare Presto)
+
+3) Se si vuole esportare il risultato in CSV, usare il seguente comando:
+
+	./presto --server localhost:8080 --catalog hive --schema default --execute "SELECT nation, year, COUNT(*) as numFilms FROM movies CROSS JOIN countries WHERE movies.title=countries.title GROUP BY nation, year;" --output-format CSV > foo.csv
+
+
+
+NOTE:
+- NON si possono creare viste a partire da tabelle Hive
+	(https://groups.google.com/forum/#!topic/presto-users/QTcz-63CyBg)
+
+	SOLUZIONE:
+
+	CREATE VIEW all_actors AS
+	SELECT actor as name, filmArray
+	FROM actors
+	UNION ALL
+	SELECT actress as name, filmArray
+	FROM actresses;
+
+	INSERT OVERWRITE LOCAL DIRECTORY 'Result/ProlificActors'
+	SELECT name, size(filmArray) as numFilm
+	FROM all_actors
+	ORDER BY numFilm DESC
+	LIMIT 10;
+
+
+
+	diventa
+
+
+
+	WITH all_actors AS (
+		SELECT actor as name, filmArray
+		FROM actors
+		UNION ALL
+		SELECT actress as name, filmArray
+		FROM actresses
+	)
+	SELECT name, cardinality(filmArray) as numFilm
+	FROM all_actors
+	ORDER BY numFilm DESC
+	LIMIT 10;
+
+- La funzione "size" si chiama "cardinality"
+
+- Il cross join implicito non è supportato
+
+	SOLUZIONE:
+
+	SELECT nation, COUNT(*) as numFilms
+	FROM ratings, countries
+	WHERE ratings.title=countries.title
+	GROUP BY nation
+	ORDER BY numFilms DESC;
+
+
+
+	diventa
+
+
+
+	SELECT nation, COUNT(*) as numFilms
+	FROM ratings CROSS JOIN countries
+	WHERE ratings.title=countries.title
+	GROUP BY nation
+	ORDER BY numFilms DESC;
+
+
+
+Pagine utili:
+- UDFs: https://prestodb.io/docs/current/develop/functions.html

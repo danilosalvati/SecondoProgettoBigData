@@ -1,0 +1,114 @@
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------               ISTRUZIONI               --------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+
+Prima di tutto usare Hive per creare le tabelle.
+Avviare poi Presto con il seguente comando:
+
+	./presto --server localhost:8080 --catalog hive --schema default
+
+Eseguire infine la analisi copiando il codice sottostante nella shell interattiva.
+Se si vuole esportare il risultato in CSV, usare il seguente comando:
+
+	./presto --server localhost:8080 --catalog hive --schema default --execute "SELECT nation, year, COUNT(*) as numFilms FROM movies CROSS JOIN countries WHERE movies.title=countries.title GROUP BY nation, year;" --output-format CSV > foo.csv
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+-----------------------------------------               CODICE               ----------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+
+- ProlificActors
+
+WITH all_actors AS (
+	SELECT actor as name, filmArray
+	FROM actors
+	UNION ALL
+	SELECT actress as name, filmArray
+	FROM actresses
+)
+SELECT name, cardinality(filmArray) as numFilm
+FROM all_actors
+ORDER BY numFilm DESC
+LIMIT 10;
+
+
+
+- ProlificYear
+
+SELECT year, COUNT(*) as numFilms
+FROM movies
+GROUP BY year
+ORDER BY numFilms DESC
+LIMIT 1;
+
+
+
+- BestActors
+
+UDF!!!!!
+
+
+
+- BestDirectors
+
+UDF!!!!!
+
+
+
+- BestProducers
+
+UDF!!!!!
+
+
+
+- BestCountries
+
+SELECT nation, COUNT(*) as numFilms
+FROM ratings CROSS JOIN countries
+WHERE ratings.title=countries.title
+GROUP BY nation
+ORDER BY numFilms DESC;
+
+
+
+- BestMovieGenres
+
+SELECT genre, COUNT(*) as numFilms
+FROM ratings CROSS JOIN genres
+WHERE ratings.title=genres.film
+GROUP BY genre
+ORDER BY numFilms DESC;
+
+
+
+- BestMovieKeywords
+
+SELECT keyword, COUNT(*) as numFilms
+FROM ratings CROSS JOIN keywords
+WHERE ratings.title=keywords.film
+GROUP BY keyword
+ORDER BY numFilms DESC
+LIMIT 100;
+
+
+
+- BestMoviesQuotes
+
+SELECT film, (cardinality(quotesArray)-1) as numQuotes
+FROM ratings CROSS JOIN quotes
+WHERE ratings.title=quotes.film
+ORDER BY numQuotes DESC;
+
+
+
+- FilmPerYearPerNation
+
+SELECT nation, year, COUNT(*) as numFilms
+FROM movies CROSS JOIN countries
+WHERE movies.title=countries.title
+GROUP BY nation, year;

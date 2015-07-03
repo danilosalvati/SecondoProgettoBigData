@@ -1,0 +1,250 @@
+                                    film                                     | numQuotes 
+-----------------------------------------------------------------------------+-----------
+ Fight Club (1999)                                                           |       198 
+ The Lord of the Rings: The Return of the King (2003)                        |       174 
+ The Big Lebowski (1998)                                                     |       173 
+ Finding Nemo (2003)                                                         |       172 
+ Pirates of the Caribbean: The Curse of the Black Pearl (2003)               |       161 
+ The Dark Knight (2008)                                                      |       160 
+ The Lord of the Rings: The Fellowship of the Ring (2001)                    |       157 
+ The Lord of the Rings: The Two Towers (2002)                                |       155 
+ Batman Begins (2005)                                                        |       153 
+ Jurassic Park (1993)                                                        |       138 
+ Sin City (2005)                                                             |       137 
+ Star Wars (1977)                                                            |       137 
+ Star Wars: Episode V - The Empire Strikes Back (1980)                       |       135 
+ V for Vendetta (2005)                                                       |       126 
+ Pulp Fiction (1994)                                                         |       123 
+ It's a Wonderful Life (1946)                                                |       122 
+ The Avengers (2012)                                                         |       121 
+ Casino (1995)                                                               |       120 
+ Snatch. (2000)                                                              |       120 
+ The Princess Bride (1987)                                                   |       119 
+ Guardians of the Galaxy (2014)                                              |       118 
+ Inception (2010)                                                            |       116 
+ Indiana Jones and the Last Crusade (1989)                                   |       114 
+ Harry Potter and the Deathly Hallows: Part 2 (2011)                         |       111 
+ The Departed (2006)                                                         |       110 
+ The Lion King (1994)                                                        |       110 
+ Back to the Future (1985)                                                   |       108 
+ The Matrix (1999)                                                           |       108 
+ Star Wars: Episode VI - Return of the Jedi (1983)                           |       107 
+ The Shawshank Redemption (1994)                                             |       106 
+ The Wizard of Oz (1939)                                                     |       105 
+ Interstellar (2014)                                                         |       105 
+ Scarface (1983)                                                             |       104 
+ Forrest Gump (1994)                                                         |       103 
+ American Beauty (1999)                                                      |       103 
+ Lock, Stock and Two Smoking Barrels (1998)                                  |       102 
+ Monsters, Inc. (2001)                                                       |       102 
+ The Dark Knight Rises (2012)                                                |       101 
+ Groundhog Day (1993)                                                        |        99 
+ Goodfellas (1990)                                                           |        98 
+ The Green Mile (1999)                                                       |        97 
+ Eternal Sunshine of the Spotless Mind (2004)                                |        96 
+ Casablanca (1942)                                                           |        96 
+ Reservoir Dogs (1992)                                                       |        96 
+ Aliens (1986)                                                               |        95 
+ Once Upon a Time in America (1984)                                          |        94 
+ Lawrence of Arabia (1962)                                                   |        92 
+ Donnie Darko (2001)                                                         |        91 
+ Gladiator (2000)                                                            |        91 
+ Saving Private Ryan (1998)                                                  |        91 
+ Die Hard (1988)                                                             |        90 
+ All About Eve (1950)                                                        |        88 
+ X-Men: Days of Future Past (2014)                                           |        87 
+ The Prestige (2006)                                                         |        86 
+ The Usual Suspects (1995)                                                   |        86 
+ Good Will Hunting (1997)                                                    |        84 
+ Monty Python and the Holy Grail (1975)                                      |        83 
+ Full Metal Jacket (1987)                                                    |        82 
+ Toy Story (1995)                                                            |        82 
+ Apocalypse Now (1979)                                                       |        82 
+ Gone with the Wind (1939)                                                   |        82 
+ Braveheart (1995)                                                           |        81 
+ Jaws (1975)                                                                 |        81 
+ The Godfather (1972)                                                        |        78 
+ Se7en (1995)                                                                |        76 
+ Stand by Me (1986)                                                          |        75 
+ Raiders of the Lost Ark (1981)                                              |        75 
+ Network (1976)                                                              |        73 
+ Heat (1995)                                                                 |        73 
+ Million Dollar Baby (2004)                                                  |        72 
+ Terminator 2: Judgment Day (1991)                                           |        72 
+ Blade Runner (1982)                                                         |        72 
+ The Wolf of Wall Street (2013)                                              |        71 
+ Memento (2000)                                                              |        70 
+ Inglourious Basterds (2009)                                                 |        69 
+ L.A. Confidential (1997)                                                    |        69 
+ Django Unchained (2012)                                                     |        69 
+ The Godfather: Part II (1974)                                               |        69 
+ Schindler's List (1993)                                                     |        69 
+ How to Train Your Dragon (2010)                                             |        68 
+ Toy Story 3 (2010)                                                          |        68 
+ A Clockwork Orange (1971)                                                   |        68 
+ Butch Cassidy and the Sundance Kid (1969)                                   |        68 
+ Platoon (1986)                                                              |        67 
+ A Beautiful Mind (2001)                                                     |        67 
+ Léon (1994)                                                                 |        67 
+ Gran Torino (2008)                                                          |        66 
+ Some Like It Hot (1959)                                                     |        66 
+ Singin' in the Rain (1952)                                                  |        65 
+ Rocky (1976)                                                                |        64 
+ Life of Brian (1979)                                                        |        64 
+ Rear Window (1954)                                                          |        64 
+ No Country for Old Men (2007)                                               |        63 
+ North by Northwest (1959)                                                   |        63 
+ Trainspotting (1996)                                                        |        62 
+ Fargo (1996)                                                                |        62 
+ Citizen Kane (1941)                                                         |        60 
+ Hauru no ugoku shiro (2004)                                                 |        59 
+ The Silence of the Lambs (1991)                                             |        59 
+ Unforgiven (1992)                                                           |        59 
+ The Great Escape (1963)                                                     |        59 
+ Annie Hall (1977)                                                           |        58 
+ Kill Bill: Vol. 1 (2003)                                                    |        57 
+ Mad Max: Fury Road (2015)                                                   |        55 
+ Amadeus (1984)                                                              |        55 
+ Il buono, il brutto, il cattivo (1966)                                      |        55 
+ The Shining (1980)                                                          |        54 
+ The Big Sleep (1946)                                                        |        54 
+ One Flew Over the Cuckoo's Nest (1975)                                      |        54 
+ Taxi Driver (1976)                                                          |        53 
+ Beauty and the Beast (1991)                                                 |        53 
+ Sunset Blvd. (1950)                                                         |        52 
+ The Grand Budapest Hotel (2014)                                             |        52 
+ Ben-Hur (1959)                                                              |        52 
+ Up (2009)                                                                   |        51 
+ The Maltese Falcon (1941)                                                   |        51 
+ The Terminator (1984)                                                       |        50 
+ Gandhi (1982)                                                               |        49 
+ Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1964) |        49 
+ C'era una volta il West (1968)                                              |        47 
+ The Sixth Sense (1999)                                                      |        47 
+ Chinatown (1974)                                                            |        46 
+ The Truman Show (1998)                                                      |        46 
+ Notorious (1946)                                                            |        45 
+ The King's Speech (2010)                                                    |        45 
+ Oldeuboi (2003)                                                             |        44 
+ Mononoke-hime (1997)                                                        |        44 
+ Psycho (1960)                                                               |        44 
+ The Thing (1982)                                                            |        43 
+ The Pianist (2002)                                                          |        43 
+ To Kill a Mockingbird (1962)                                                |        43 
+ Alien (1979)                                                                |        43 
+ Akira (1988)                                                                |        43 
+ Das Boot (1981)                                                             |        42 
+ Before Sunset (2004)                                                        |        42 
+ Before Sunrise (1995)                                                       |        42 
+ Who's Afraid of Virginia Woolf? (1966)                                      |        41 
+ Sen to Chihiro no Kamikakushi (2001)                                        |        41 
+ Le fabuleux destin d'Amélie Poulain (2001)                                  |        40 
+ Per qualche dollaro in più (1965)                                           |        40 
+ The Bridge on the River Kwai (1957)                                         |        40 
+ Gone Girl (2014)                                                            |        40 
+ There Will Be Blood (2007)                                                  |        40 
+ Tenkû no shiro Rapyuta (1986)                                               |        40 
+ Requiem for a Dream (2000)                                                  |        39 
+ 12 Years a Slave (2013)                                                     |        39 
+ Twelve Monkeys (1995)                                                       |        39 
+ The Imitation Game (2014)                                                   |        38 
+ It Happened One Night (1934)                                                |        38 
+ Shutter Island (2010)                                                       |        37 
+ Der Untergang (2004)                                                        |        37 
+ The Help (2011)                                                             |        37 
+ The Night of the Hunter (1955)                                              |        37 
+ Double Indemnity (1944)                                                     |        37 
+ Rebecca (1940)                                                              |        37 
+ The Bourne Ultimatum (2007)                                                 |        37 
+ Det sjunde inseglet (1957)                                                  |        36 
+ The Apartment (1960)                                                        |        36 
+ The Hustler (1961)                                                          |        35 
+ WALL·E (2008)                                                               |        35 
+ Whiplash (2014)                                                             |        34 
+ The Treasure of the Sierra Madre (1948)                                     |        34 
+ Dial M for Murder (1954)                                                    |        34 
+ 12 Angry Men (1957)                                                         |        33 
+ American History X (1998)                                                   |        33 
+ Cool Hand Luke (1967)                                                       |        33 
+ 2001: A Space Odyssey (1968)                                                |        32 
+ The Sting (1973)                                                            |        31 
+ The Best Years of Our Lives (1946)                                          |        30 
+ On the Waterfront (1954)                                                    |        30 
+ Raging Bull (1980)                                                          |        30 
+ La vita è bella (1997)                                                      |        30 
+ The Deer Hunter (1978)                                                      |        29 
+ Touch of Evil (1958)                                                        |        29 
+ Yôjinbô (1961)                                                              |        29 
+ Barry Lyndon (1975)                                                         |        29 
+ Warrior (2011)                                                              |        29 
+ Lagaan: Once Upon a Time in India (2001)                                    |        28 
+ Roman Holiday (1953)                                                        |        28 
+ The Graduate (1967)                                                         |        28 
+ Into the Wild (2007)                                                        |        28 
+ El laberinto del fauno (2006)                                               |        27 
+ Mary and Max (2009)                                                         |        26 
+ Witness for the Prosecution (1957)                                          |        25 
+ Strangers on a Train (1951)                                                 |        25 
+ Hotel Rwanda (2004)                                                         |        24 
+ Vertigo (1958)                                                              |        23 
+ Les quatre cents coups (1959)                                               |        23 
+ Boyhood (2014/I)                                                            |        23 
+ Mr. Smith Goes to Washington (1939)                                         |        23 
+ Rush (2013/I)                                                               |        22 
+ Dog Day Afternoon (1975)                                                    |        22 
+ Per un pugno di dollari (1964)                                              |        22 
+ Prisoners (2013)                                                            |        21 
+ The Elephant Man (1980)                                                     |        21 
+ The Third Man (1949)                                                        |        21 
+ High Noon (1952)                                                            |        20 
+ The Grapes of Wrath (1940)                                                  |        20 
+ Shichinin no samurai (1954)                                                 |        19 
+ The Great Dictator (1940)                                                   |        18 
+ Cidade de Deus (2002)                                                       |        16 
+ Smultronstället (1957)                                                      |        16 
+ Okuribito (2008)                                                            |        15 
+ Paths of Glory (1957)                                                       |        15 
+ Les diaboliques (1955)                                                      |        15 
+ 8œ (1963)                                                                   |        15 
+ La haine (1995)                                                             |        14 
+ El secreto de sus ojos (2009)                                               |        14 
+ Amores perros (2000)                                                        |        13 
+ Rashômon (1950)                                                             |        13 
+ Hachi: A Dog's Tale (2009)                                                  |        13 
+ M (1931)                                                                    |        13 
+ Ran (1985)                                                                  |        13 
+ Le samouraï (1967)                                                          |        13 
+ Stalker (1979)                                                              |        12 
+ Das Leben der Anderen (2006)                                                |        12 
+ La battaglia di Algeri (1966)                                               |        12 
+ In the Name of the Father (1993)                                            |        12 
+ Kaze no tani no Naushika (1984)                                             |        12 
+ The Killing (1956)                                                          |        12 
+ Jodaeiye Nader az Simin (2011)                                              |        12 
+ Persona (1966)                                                              |        11 
+ Mou gaan dou (2002)                                                         |        11 
+ Nuovo Cinema Paradiso (1988)                                                |        11 
+ Hotaru no haka (1988)                                                       |        11 
+ Solyaris (1972)                                                             |        11 
+ Ikiru (1952)                                                                |        10 
+ Intouchables (2011)                                                         |        10 
+ Trois couleurs: Rouge (1994)                                                |        10 
+ 3 Idiots (2009)                                                             |        10 
+ The General (1926)                                                          |         8 
+ Fanny och Alexander (1982)                                                  |         8 
+ Judgment at Nuremberg (1961)                                                |         8 
+ Ladri di biciclette (1948)                                                  |         8 
+ Salinui chueok (2003)                                                       |         7 
+ Paris, Texas (1984)                                                         |         6 
+ La strada (1954)                                                            |         5 
+ Incendies (2010)                                                            |         5 
+ Relatos salvajes (2014)                                                     |         4 
+ Metropolis (1927)                                                           |         4 
+ Jagten (2012)                                                               |         3 
+ Tonari no Totoro (1988)                                                     |         3 
+ Modern Times (1936)                                                         |         3 
+ Le salaire de la peur (1953)                                                |         3 
+ City Lights (1931)                                                          |         3 
+ Yip Man (2008)                                                              |         3 
+ Underground (1995)                                                          |         2 
+ Bom yeoreum gaeul gyeoul geurigo bom (2003)                                 |         2 
