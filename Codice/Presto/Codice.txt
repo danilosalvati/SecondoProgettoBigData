@@ -69,11 +69,23 @@ UDF!!!!!
 
 - BestDirectors
 
+SELECT director, COUNT(*) as numFilms
+FROM directors CROSS JOIN ratings
+WHERE array_contains_substring(title,filmArray)
+GROUP BY director
+ORDER BY numFilms DESC;
+
 UDF!!!!!
 
 
 
 - BestProducers
+
+SELECT producer, COUNT(*) as numFilms
+FROM ratings CROSS JOIN producers
+WHERE array_contains_substring(title,filmArray)
+GROUP BY producer
+ORDER BY numFilms DESC;
 
 UDF!!!!!
 
