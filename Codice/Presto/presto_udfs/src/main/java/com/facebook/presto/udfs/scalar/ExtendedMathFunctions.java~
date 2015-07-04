@@ -19,6 +19,8 @@ import com.facebook.presto.operator.scalar.ScalarFunction;
 import com.facebook.presto.spi.type.StandardTypes;
 import com.facebook.presto.type.SqlType;
 
+import io.airlift.slice.Slice;
+
 /**
  * Created by stagra on 2/17/15.
  */
@@ -44,12 +46,13 @@ public class ExtendedMathFunctions
 
     @Description("Check if an array of strings contains a substring")
     @ScalarFunction
-    @SqlType(StandardTypes.Boolean)
+    @SqlType(StandardTypes.BOOLEAN)
     public static boolean array_contains_substring(@SqlType(StandardTypes.VARCHAR) Slice title, @SqlType(StandardTypes.ARRAY) Slice[] movies)
     {
-    for (String movie : movies) {
-if (movie.startsWith(title)) {
+for (Slice movie : movies) {
+if (movie.toString().startsWith(title.toString())) {
 return new Boolean(true);
+}
 }
 return new Boolean(false);
 }

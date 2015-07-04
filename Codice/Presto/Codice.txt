@@ -50,6 +50,19 @@ LIMIT 1;
 
 - BestActors
 
+WITH all_actors AS (
+	SELECT actor as name, filmArray
+	FROM actors
+	UNION ALL
+	SELECT actress as name, filmArray
+	FROM actresses
+)
+SELECT name, COUNT(*) as numFilms
+FROM all_actors CROSS JOIN ratings
+WHERE array_contains_substring(title,filmArray)
+GROUP BY name
+ORDER BY numFilms DESC;
+
 UDF!!!!!
 
 

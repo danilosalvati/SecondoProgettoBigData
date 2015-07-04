@@ -11,23 +11,23 @@ Prime analisi implementate (bozza):
 9- Le prime 100 keywords usate nei film di maggior successo
 10- Generi dei film di maggior successo
 
-	MapReduce	Pig	Hive	Spark		tez
-1	x		x	x	x		x
-2	x		x	x	x		x
-3	x		x	x	x (senza tempi)	x
-4	x		x	x	x		x
-5	x		x	x	x		x
-6	x		x	x	x		x
-7	x		x	x	x		x
-8	x		x	x	x		x
-9	x		x	x	x		x
-10	x		x	x	x		x
+	MapReduce	Pig	Hive	Spark		tez	Presto
+1	x		x	x	x		x	x
+2	x		x	x	x		x	x
+3	x		x	x	x (senza tempi)	x	
+4	x		x	x	x		x	
+5	x		x	x	x		x	x
+6	x		x	x	x		x	
+7	x		x	x	x		x	x
+8	x		x	x	x		x	x
+9	x		x	x	x		x	x
+10	x		x	x	x		x	x
 
 
 
-Tempi su cluster con macchine m1.large
+Tempi su cluster con macchine m1.large (1 master, 2 core)
 
-	MapReduce	Pig	Hive	Spark	tez
+	MapReduce	Pig	Hive	Spark	tez	Presto
 1					x	
 2					x	
 3						

@@ -1,0 +1,12 @@
+dontinline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.compiled_avgt_jmhLoop
+dontinline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.compiled_sample_jmhLoop
+dontinline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.compiled_ss_jmhStub
+dontinline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.compiled_thrpt_jmhLoop
+dontinline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.handCoded_avgt_jmhLoop
+dontinline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.handCoded_sample_jmhLoop
+dontinline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.handCoded_ss_jmhStub
+dontinline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.handCoded_thrpt_jmhLoop
+inline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.compiled
+inline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.handCoded
+inline,com/facebook/presto/sql/gen/BenchmarkPageProcessor.setup
+inline,org/openjdk/jmh/infra/Blackhole.clearSinks
