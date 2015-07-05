@@ -85,3 +85,4 @@ Pagine utili:
 - UDFs: https://prestodb.io/docs/current/develop/functions.html
 	http://www.qubole.com/blog/product/plugging-in-presto-udfs/
 	http://stackoverflow.com/questions/30472534/user-defined-functions-in-facebook-presto
+	http://grepcode.com/file/repo1.maven.org/maven2/com.facebook.presto/presto-spi/0.82/com/facebook/presto/spi/type/StandardTypes.java

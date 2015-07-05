@@ -204,4 +204,15 @@ public class ArrayAggregation
         }
         return ret;
     }
+
+ public static boolean array_contains_substring(Slice title, Slice[] movies)
+    {
+for (Slice movie : movies) {
+if (movie.toString().startsWith(title.toString())) {
+return new Boolean(true);
+}
+}
+
+return new Boolean(false);
+}
 }

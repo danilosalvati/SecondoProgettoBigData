@@ -81,6 +81,7 @@ NOTE:
 
 
 Pagine utili:
+- Repository Github: https://github.com/facebook/presto
 - UDFs: https://prestodb.io/docs/current/develop/functions.html
 	http://www.qubole.com/blog/product/plugging-in-presto-udfs/
 	http://stackoverflow.com/questions/30472534/user-defined-functions-in-facebook-presto

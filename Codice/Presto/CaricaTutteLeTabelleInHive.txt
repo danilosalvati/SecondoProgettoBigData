@@ -1,0 +1,89 @@
+CREATE TABLE IF NOT EXISTS movies (title STRING, year STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/moviesENDVALUE.list' OVERWRITE INTO TABLE movies;
+
+CREATE TABLE IF NOT EXISTS actorsRAW (actor STRING, rowFilm STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/actorsENDVALUE.list' OVERWRITE INTO TABLE actorsRAW;
+
+CREATE TABLE IF NOT EXISTS actors (actor STRING, filmArray ARRAY<STRING>);
+
+INSERT INTO TABLE actors
+SELECT actor, filmArray
+FROM (SELECT actor, split(rowFilm,'<ENDVALUE>') as filmArray FROM actorsRAW) as actors2;
+
+DROP TABLE actorsRaw;
+
+CREATE TABLE IF NOT EXISTS actressesRAW (actress STRING, rowFilm STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/actressesENDVALUE.list' OVERWRITE INTO TABLE actressesRAW;
+
+CREATE TABLE IF NOT EXISTS actresses (actress STRING, filmArray ARRAY<STRING>);
+
+INSERT INTO TABLE actresses
+SELECT actress, filmArray
+FROM (SELECT actress, split(rowFilm,'<ENDVALUE>') as filmArray FROM actressesRAW) as actresses2;
+
+DROP TABLE actressesRAW;
+
+CREATE TABLE IF NOT EXISTS ratings (distribution STRING, votes STRING, rank STRING, title STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+    
+LOAD DATA INPATH '/input/top250movies.list' OVERWRITE INTO TABLE ratings;
+
+CREATE TABLE IF NOT EXISTS countries (title STRING, nation STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/countriesENDVALUE.list' OVERWRITE INTO TABLE countries;
+
+CREATE TABLE IF NOT EXISTS directorsRAW (director STRING, rowFilm STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/directorsENDVALUE.list' OVERWRITE INTO TABLE directorsRAW;
+
+CREATE TABLE IF NOT EXISTS directors (director STRING, filmArray ARRAY<STRING>);
+
+INSERT INTO TABLE directors
+SELECT director, filmArray
+FROM (SELECT director, split(rowFilm,'<ENDVALUE>') as filmArray FROM directorsRAW) as directors2;
+
+DROP TABLE directorsRAW;
+
+CREATE TABLE IF NOT EXISTS genres (film STRING, genre STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/genresENDVALUE.list' OVERWRITE INTO TABLE genres;
+
+CREATE TABLE IF NOT EXISTS keywords (film STRING, keyword STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/keywordsENDVALUE.list' OVERWRITE INTO TABLE keywords;
+
+CREATE TABLE IF NOT EXISTS quotesRAW (film STRING, rowQuotes STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/quotesENDVALUE.list' OVERWRITE INTO TABLE quotesRAW;
+
+CREATE TABLE IF NOT EXISTS quotes (film STRING, quotesArray ARRAY<STRING>);
+
+INSERT INTO TABLE quotes
+SELECT film, quotesArray
+FROM (SELECT film, split(rowQuotes,'<ENDVALUE>') as quotesArray FROM quotesRAW) as quotes2;
+
+DROP TABLE quotesRaw;
+
+CREATE TABLE IF NOT EXISTS producersRAW (producer STRING, rowFilm STRING)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+LOAD DATA INPATH '/input/producersENDVALUE.list' OVERWRITE INTO TABLE producersRAW;
+
+CREATE TABLE IF NOT EXISTS producers (producer STRING, filmArray ARRAY<STRING>);
+
+INSERT INTO TABLE producers
+SELECT producer, filmArray
+FROM (SELECT producer, split(rowFilm,'<ENDVALUE>') as filmArray FROM producersRAW) as producers2;
+
+DROP TABLE producersRAW;
