@@ -6,8 +6,8 @@ echo "**************************************************************************
 echo
 
 ##############################################################################
-#### Questo script si occupa di avviare tutti gli script di Presto salvando ####
-#### poi il risultato su s3						  ####
+#### Questo script si occupa di avviare tutti gli script di Presto        ####
+#### salvando poi il risultato su s3					  ####
 ##############################################################################
 
 # Creo la cartella che conterra' tutti i risultati

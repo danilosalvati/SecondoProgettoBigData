@@ -14,10 +14,10 @@ Prime analisi implementate (bozza):
 	MapReduce	Pig	Hive	Spark	tez	Presto
 1	x		x	x	x	x	x
 2	x		x	x	x	x	x
-3	x		x	x	x	x
-4	x		x	x	x	x
+3	x		x	x	x	x	
+4	x		x	x	x	x	
 5	x		x	x	x	x	x
-6	x		x	x	x	x
+6	x		x	x	x	x	
 7	x		x	x	x	x	x
 8	x		x	x	x	x	x
 9	x		x	x	x	x	x
@@ -28,15 +28,15 @@ Prime analisi implementate (bozza):
 Tempi su cluster con macchine m1.large (1 master, 2 core)
 
 	MapReduce	Pig	Hive	Spark	tez	Presto
-1			x	x	x	x	x
-2			x	x	x	x	x
+1			x	x	x	x
+2			x	x	x	x
 3			x	x		x
 4			x	x		x
-5			x	x	x	x	x
+5			x	x	x	x
 6			x	x	x	x
-7			x	x	x	x	x
-8			x	x	x	x	x
-9			x	x	x	x	x
-10			x	x	x	x	x
+7			x	x	x	x
+8			x	x	x	x
+9			x	x	x	x
+10			x	x	x	x
 
 N.B Le analisi 3 e 4 richiedono un'eccessiva quantità di memoria da parte di Spark, quindi abbiamo usato macchine r3.8xlarge (1 master, 2 core)

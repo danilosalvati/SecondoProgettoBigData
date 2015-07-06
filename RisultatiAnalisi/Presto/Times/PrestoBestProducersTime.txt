@@ -1,3 +1,0 @@
-real	0m29.413s
-user	0m13.612s
-sys	0m1.676s

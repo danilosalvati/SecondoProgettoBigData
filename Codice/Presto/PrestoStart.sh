@@ -14,7 +14,6 @@ echo
 mkdir Result
 
 # Avvio gli script
-./startAllHiveAnalysis.sh
 ./startBestActorsAnalysis.sh
 ./startBestCountriesAnalysis.sh
 ./startBestDirectorsAnalysis.sh
