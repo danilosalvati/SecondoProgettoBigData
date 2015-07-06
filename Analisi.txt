@@ -30,7 +30,7 @@ Tempi su cluster con macchine m1.large (1 master, 2 core)
 	MapReduce	Pig	Hive	Spark	tez	Presto
 1			x	x	x	x	x
 2			x	x	x	x	x
-3			x	x		x
+3			x	x	B	x
 4			x	x		x
 5			x	x	x	x	x
 6			x	x	x	x
