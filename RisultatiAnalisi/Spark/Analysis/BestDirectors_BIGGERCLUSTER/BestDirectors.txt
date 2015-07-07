@@ -1,0 +1,174 @@
+Kubrick, Stanley	8
+Hitchcock, Alfred (I)	8
+Scorsese, Martin	7
+Nolan, Christopher (I)	7
+Miyazaki, Hayao	6
+Tarantino, Quentin	6
+Spielberg, Steven	6
+Leone, Sergio (I)	5
+Kurosawa, Akira	5
+Wilder, Billy	5
+Chaplin, Charles	5
+Bergman, Ingmar	4
+Coen, Joel	3
+Jackson, Peter (I)	3
+Unkrich, Lee	3
+Cameron, James (I)	3
+Coppola, Francis Ford	3
+Linklater, Richard	3
+Coen, Ethan	3
+Lumet, Sidney	3
+Scott, Ridley	3
+Wyler, William	3
+Fincher, David	3
+Capra, Frank	3
+Eastwood, Clint	3
+Cukor, George	2
+Zemeckis, Robert	2
+Darabont, Frank	2
+Clouzot, Henri-Georges	2
+Fellini, Federico	2
+Jones, Terry (I)	2
+Ritchie, Guy	2
+Fleming, Victor (I)	2
+Reiner, Rob	2
+Lean, David (I)	2
+Gilliam, Terry	2
+Singer, Bryan	2
+Nichols, Mike (I)	2
+Howard, Ron (I)	2
+Polanski, Roman (I)	2
+Huston, John (I)	2
+Welles, Orson	2
+Villeneuve, Denis	2
+Lang, Fritz (I)	2
+Docter, Pete	2
+Tarkovsky, Andrei	2
+Forman, Milos	2
+Stanton, Andrew (I)	2
+Hill, George Roy	2
+DeBlois, Dean	1
+Tornatore, Giuseppe	1
+Allers, Roger	1
+Hooper, Tom (II)	1
+Sanders, Terry (I)	1
+Pontecorvo, Gillo	1
+Robbins, Bret	1
+Kazan, Elia	1
+Rossen, Robert	1
+Laughton, Charles	1
+Bruckman, Clyde	1
+Rosenberg, Stuart (I)	1
+Kusturica, Emir	1
+Allen, Woody	1
+Takita, Yôjirô	1
+Penn, Sean (I)	1
+Truffaut, François	1
+Verbinski, Gore	1
+Curtiz, Michael	1
+Wachowski, Andy	1
+Donen, Stanley	1
+Ford, John (I)	1
+Lau, Wai-Keung	1
+Jeunet, Jean-Pierre	1
+Keaton, Buster	1
+Campanella, Juan José	1
+Vinterberg, Thomas	1
+Sturges, John	1
+Mendes, Sam (I)	1
+Whedon, Joss	1
+Benigni, Roberto	1
+Hawks, Howard	1
+Tremmel, Chris	1
+Lasseter, John	1
+Attenborough, Richard	1
+Hirschbiegel, Oliver	1
+Lund, Kátia	1
+Mak, Alan (I)	1
+De Sica, Vittorio	1
+Besson, Luc	1
+Kaye, Tony (I)	1
+Kershner, Irvin	1
+Wood, Sam (I)	1
+Gibson, Mel (I)	1
+Gunn, James (II)	1
+Lucas, George (I)	1
+Anderson, Paul Thomas	1
+Carpenter, John (I)	1
+McQueen, Steve (III)	1
+Yip, Wilson	1
+Hallström, Lasse	1
+Takahata, Isao	1
+Wachowski, Lana	1
+Yates, David (II)	1
+Peterson, Bob (III)	1
+Toledano, Eric	1
+Petersen, Wolfgang	1
+Elliot, Adam	1
+Melville, Jean-Pierre	1
+Chazelle, Damien	1
+Farhadi, Asghar	1
+Wise, Kirk	1
+Hanson, Curtis	1
+Vidor, King	1
+Sheridan, Jim (I)	1
+Park, Chan-wook (I)	1
+Haegar, Jack	1
+Mankiewicz, Joseph L.	1
+Weir, Peter (I)	1
+McTeigue, James	1
+Greengrass, Paul	1
+Meirelles, Fernando (I)	1
+González Iñárritu, Alejandro	1
+Boyle, Danny	1
+Gondry, Michel	1
+Mulligan, Robert (I)	1
+Reed, Carol (I)	1
+Petro, George	1
+Anderson, Wes (I)	1
+Taylor, Tate	1
+Ôtomo, Katsuhiro	1
+Mitchum, Robert	1
+Nakache, Olivier	1
+Stone, Oliver (I)	1
+Avildsen, John G.	1
+Sanders, Chris (III)	1
+Trousdale, Gary	1
+Szifrón, Damián	1
+Shyamalan, M. Night	1
+Wenders, Wim	1
+Bong, Joon-ho	1
+Tyldum, Morten	1
+Kelly, Gene (I)	1
+Kieslowski, Krzysztof	1
+Miller, George (II)	1
+Cernescu, Radu	1
+Taurog, Norman	1
+McTiernan, John (I)	1
+Hirani, Rajkumar	1
+Kassovitz, Mathieu	1
+Kim, Ki-duk (II)	1
+Smith, Andrew M. (I)	1
+Roth, Eli	1
+George, Terry (I)	1
+Marquand, Richard	1
+Kramer, Stanley	1
+Demme, Jonathan	1
+Miller, Frank (II)	1
+Mann, Michael (I)	1
+Rodriguez, Robert (I)	1
+Ramis, Harold	1
+Gowariker, Ashutosh	1
+Silverman, David (I)	1
+Aronofsky, Darren	1
+Van Sant, Gus	1
+Zinnemann, Fred	1
+De Palma, Brian	1
+Minkoff, Rob	1
+Henckel von Donnersmarck, Florian	1
+del Toro, Guillermo	1
+Cimino, Michael (I)	1
+LeRoy, Mervyn	1
+Lynch, David (I)	1
+Kelly, Richard (II)	1
+O'Connor, Gavin (I)	1

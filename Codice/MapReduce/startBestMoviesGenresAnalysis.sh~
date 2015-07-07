@@ -1,0 +1,18 @@
+#! /bin/bash
+echo
+echo "**************************************************************************"
+echo "****************** Starting Best MoviesGenres Analysis *******************"
+echo "**************************************************************************"
+echo
+
+# Memorizzo anche il tempo impiegato dallo script salvandolo su un file apposito
+./copyOnhdfs.sh
+mkdir Result
+mkdir Result/BestMoviesGenres
+mkdir Result/Times
+mkdir Result/Times/BestMoviesGenres
+hive -e 'show tables'|xargs -I '{}' hive -e 'drop table {}'
+{ time sh -c 'hive -f BestMoviesGenresLoad.hql ; ./presto --server localhost:8080 --catalog hive --schema default --execute "SELECT genre, COUNT(*) as numFilms FROM ratings CROSS JOIN genres WHERE ratings.title=genres.film GROUP BY genre ORDER BY numFilms DESC;" --output-format CSV > Result/BestMoviesGenres/BestMoviesGenres.csv' ; } 2> Result/Times/BestMoviesGenres/tmp.txt 
+cat Result/Times/BestMoviesGenres/tmp.txt | tail -3 > Result/Times/PrestoBestMoviesGenresTime.txt
+rm -rf Result/Times/BestMoviesGenres
+echo "Done."
